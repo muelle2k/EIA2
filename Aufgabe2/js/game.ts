@@ -118,7 +118,7 @@ namespace memorySpiel {
             // min = Math.ceil(min);
             //  max = Math.floor(max);
             let random: number = Math.floor(Math.random() * (max - min)) + min;
-            var classRandom : number= Math.floor(Math.random() * (3 - 0)) + 0;
+           
             console.log("Card:" + i);
             console.log(random);
 

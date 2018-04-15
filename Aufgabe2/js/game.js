@@ -50,7 +50,6 @@ var memorySpiel;
             // min = Math.ceil(min);
             //  max = Math.floor(max);
             var random = Math.floor(Math.random() * (max - min)) + min;
-            var classRandom = Math.floor(Math.random() * (3 - 0)) + 0;
             console.log("Card:" + i);
             console.log(random);
             childNodeHTML = "<div  class='card' id='Karte" + i + "'>";
