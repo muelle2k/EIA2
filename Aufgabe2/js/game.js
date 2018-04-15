@@ -2,6 +2,7 @@ var memorySpiel;
 (function (memorySpiel) {
     var cardInfo = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     var cardList = [];
+    var classCards = ["taken", "visible", "hidden"];
     var playerList = [];
     var players = [1, 2, 3, 4];
     function inputPairs() {
@@ -50,9 +51,13 @@ var memorySpiel;
             // min = Math.ceil(min);
             //  max = Math.floor(max);
             var random = Math.floor(Math.random() * (max - min)) + min;
+            var classCardsRandom = Math.floor(Math.random() * (2 - 0)) + 0;
             console.log("Card:" + i);
             console.log(random);
-            childNodeHTML = "<div  class='card' id='Karte" + i + "'>";
+            childNodeHTML = "<div class='";
+            childNodeHTML += classCards[classCardsRandom];
+            console.log(classCards[classCardsRandom]);
+            childNodeHTML += "' id='Karte" + i + "'>";
             childNodeHTML += "<p class='info'>";
             childNodeHTML += cardList[random];
             childNodeHTML += "</p>";

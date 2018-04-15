@@ -5,8 +5,10 @@ namespace memorySpiel {
 
     let cardInfo: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     let cardList: string[] = [];
+    let classCards: string[] = ["taken", "visible", "hidden"];
     let playerList: number[] = [];
-    let players: number[] = [1,2,3,4];
+    let players: number[] = [1, 2, 3, 4];
+
 
 
 
@@ -80,7 +82,7 @@ namespace memorySpiel {
             let inhalt: number = players[0];
             playerList.push(inhalt);
 
-           let removed = players.splice(0, 1);
+            let removed = players.splice(0, 1);
 
 
             console.log("showPlayers");
@@ -118,11 +120,14 @@ namespace memorySpiel {
             // min = Math.ceil(min);
             //  max = Math.floor(max);
             let random: number = Math.floor(Math.random() * (max - min)) + min;
-           
+            let classCardsRandom: number = Math.floor(Math.random() * (2 - 0)) + 0;
             console.log("Card:" + i);
             console.log(random);
 
-            childNodeHTML = "<div  class='card' id='Karte" + i + "'>";
+            childNodeHTML = "<div class='";
+            childNodeHTML += classCards[classCardsRandom];
+            console.log(classCards[classCardsRandom]);
+            childNodeHTML += "' id='Karte" + i + "'>";
             childNodeHTML += "<p class='info'>";
             childNodeHTML += cardList[random];
             childNodeHTML += "</p>";
@@ -149,10 +154,10 @@ namespace memorySpiel {
 
         let i: number = 0;
 
-        while (i < (playerList.length-1) ){
+        while (i < (playerList.length - 1)) {
 
-           
-            
+
+
             childNodeHTML = "";
             childNodeHTML += "<div class='player' id='Spieler" + i + "'>";
             childNodeHTML += "<p class='playerInfo'>";
@@ -161,7 +166,7 @@ namespace memorySpiel {
             childNodeHTML += "<p class ='punkte'>";
             childNodeHTML += "Punkte"; //Hier komm dann die Punktenanz
             childNodeHTML += "</div>";
-            
+
 
             console.log("HTML-text" + childNodeHTML);
 
