@@ -1,26 +1,43 @@
 var memorySpiel;
 (function (memorySpiel) {
+    //Karten
     var cardInfo = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     var cardList = [];
-    var classCards = ["taken", "visible", "hidden"];
+    //Spieler
     var playerList = [];
     var players = [1, 2, 3, 4];
+    var numPair;
+    var numPlayer;
+    //Eingabe Kartenpaare
     function inputPairs() {
         var pairs = prompt("Wie viele Kartenpaare?  Hinweis: Bis 26 Kartenpaare möglich");
         var sumPair = parseInt(pairs);
-        console.log("inputPairs");
-        return sumPair;
+        if (sumPair >= 1 && sumPair <= 26) {
+            return sumPair;
+        }
+        else {
+            alert("Deine Zahl liet nicht zwischen 1 und 26");
+            return inputPairs();
+        }
     }
     var menge = inputPairs();
     console.log(menge);
+    //Eingabe Spieler
     function inputPlayers() {
         var spielerAnzahl = prompt("Wie viele spielen mit? 1 bis 4 Spieler möglich");
         var sumPlayer = parseInt(spielerAnzahl);
-        console.log("inputPlayers");
-        return sumPlayer;
+        if (sumPlayer >= 1 && sumPlayer <= 4) {
+            return sumPlayer;
+        }
+        else {
+            alert("Deine Spieleranzahl liegt nicht zwischen 1 und 4");
+            console.log("inputPlayers");
+            return inputPlayers();
+        }
     }
     var output = inputPlayers();
     console.log(output);
+    //Mischfunktion
     function shuffleArray(x) {
         for (var i = 1; i <= x; i++) {
             var content = cardInfo[0];
@@ -41,6 +58,7 @@ var memorySpiel;
     console.log("Content playerList", playerList);
     console.log("Länge Infolist", cardInfo.length);
     console.log("Content Infolist", cardInfo);
+    //Karten generieren
     function generateCards(y) {
         var node = document.getElementById("memoryBoard");
         var childNodeHTML;
@@ -51,13 +69,12 @@ var memorySpiel;
             // min = Math.ceil(min);
             //  max = Math.floor(max);
             var random = Math.floor(Math.random() * (max - min)) + min;
-            var classCardsRandom = Math.floor(Math.random() * (2 - 0)) + 0;
+            var classCardsRandom = Math.floor(Math.random() * (3 - 0)) + 0;
             console.log("Card:" + i);
             console.log(random);
             childNodeHTML = "<div class='";
-            childNodeHTML += classCards[classCardsRandom];
-            console.log(classCards[classCardsRandom]);
-            childNodeHTML += "' id='Karte" + i + "'>";
+            childNodeHTML += randomStatus();
+            childNodeHTML += "'id='Karte" + i + "'>";
             childNodeHTML += "<p class='info'>";
             childNodeHTML += cardList[random];
             childNodeHTML += "</p>";
@@ -70,6 +87,7 @@ var memorySpiel;
             i++;
         }
     }
+    //Spieler generieren
     function generatePlayers(x) {
         var node = document.getElementById("footer");
         var childNodeHTML;
@@ -88,6 +106,19 @@ var memorySpiel;
             var inhaltPlayer = players[output];
             console.log(players);
             i++;
+        }
+    }
+    //Status der Karten
+    function randomStatus() {
+        var randomStatus = Math.random();
+        if (randomStatus <= .25) {
+            return "taken";
+        }
+        else if (randomStatus > .25 && randomStatus <= .75) {
+            return "hidden";
+        }
+        else if (randomStatus > .75) {
+            return "visible";
         }
     }
     // Hauptprogramm
