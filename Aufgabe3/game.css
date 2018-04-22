@@ -16,46 +16,49 @@
 	font-size: 2em;
 }
 
-#Karte {
-	border: black 1px solid;
-	background-color: #006934;
-	width: 75px;
-	height: 75px;
-	cloat: left;
-	margin: 2px;
-	font-size: 1.5em;
-}
-
 .visible {
 	border: black 1px solid;
-	background-color: #094a21;
+	/*background-color: #094a21;*/
 	width: 65px;
 	height: 65px;
 	float: left;
 	margin: 2px;
+	background-color: blue;
 	font-size: 1.5em;
 	color: white;
 	text-align: center;
 }
 
-.taken {
-	float: left;
-	margin: 2px;
-	width: 65px;
-	height: 65px;
-	background-color: white;
-	border: black 1px solid;
+.visible p {
 	color: white;
 }
 
-.hidden {
-	float: left;
+.taken {
 	border: black 1px solid;
-	margin: 2px;
+	/*background-color: #094a21;*/
 	width: 65px;
 	height: 65px;
+	float: left;
+	margin: 2px;
+	background-color: grey;
+}
+
+.taken p {
+	display: none;
+}
+
+.hidden {
+	border: black 1px solid;
+	/*background-color: #094a21;*/
+	width: 65px;
+	height: 65px;
+	float: left;
+	margin: 2px;
 	background-color: #094a21;
-	color: #094a21;
+}
+
+.hidden p {
+	display: none;
 }
 
 /* footer ----------------------------------*/

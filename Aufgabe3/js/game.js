@@ -39,7 +39,7 @@ var memorySpiel;
         }
     }
     var output = inputPlayers();
-    console.log(output);
+    console.log("inputPlayers:" + output);
     //Mischfunktion
     function shuffleArray(x) {
         for (var i = 1; i <= x; i++) {
@@ -79,16 +79,18 @@ var memorySpiel;
             childNodeHTML += "<div class='hidden";
             //childNodeHTML += randomStatus();
             childNodeHTML += "'id='Karte" + i + "'>";
-            childNodeHTML += "<p class='info'>";
+            childNodeHTML += "<p>";
             childNodeHTML += cardList[random];
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
-            console.log("Länge Cardlist nach Generate, " + cardList.length);
-            var content = cardList[random];
-            var removed = cardList.splice(random, 1);
-            console.log(cardList);
+            console.log("Länge Cardlist nach generateCards: " + cardList.length);
+            //let content: string = cardList[random];
+            // cardList.push(content)
+            console.log("cardList:" + cardList);
+            var removed = cardInfo.splice(random, 1);
+            console.log("cardInfo:" + cardInfo);
             i++;
         }
     }
@@ -106,10 +108,9 @@ var memorySpiel;
             childNodeHTML += "<p class ='punkte'>";
             childNodeHTML += "Punkte"; //Hier komm dann die Punktenanz
             childNodeHTML += "</div>";
-            console.log("HTML-text" + childNodeHTML);
             node.innerHTML += childNodeHTML;
             var inhaltPlayer = players[output];
-            console.log(players);
+            console.log("inhaltPlayers:" + players);
             i++;
         }
     }
@@ -133,57 +134,59 @@ var memorySpiel;
         console.log(_event);
         var div = document.getElementsByClassName("card");
         for (var i = 0; i < div.length; i++) {
-            div[i].addEventListener("click", clickHandler);
+            div[i].addEventListener("click", clickCard);
         }
     }
-    function clickHandler(_event) {
+    function clickCard(_event) {
         console.log(_event.target);
         var x = _event.target; //hiermit greife ich auf die classes 
         /* console.log(x.innerHTML); //x.className
          x.className = "visible";  //damit veränder ich die class Names
         */
-        if (x.className = "card") {
-            flippedCards += 2;
-            if (x.className = "hidden") {
-                x.classList.remove("hidden");
-                x.classList.add("visible");
-            }
-        }
-        if (flippedCards == 2) {
-        }
-    }
-    /*  function filterCardsBY(_filter: string): HTMLElement[]{
-          return cards.filter
-          }
-  
-      function compareCards(): void {
-          let openCards: HTMLElement[] = filterCardsBy("visible");
-  
-      }
-  */
-    //Karten umdrehen und vergleichen 
-    function flipCards(card, value) {
-        if (cardId.length == 0 && cardList.length < 2) {
-            //CSS: visible
-            if (cardList.length == 0) {
-                cardList.push(value);
-                cardId.push(card);
-            }
-            else if (cardList.length == 1) {
-                cardList.push(value);
-                cardId.push(card);
-                if (cardList[0] == cardList[1]) {
-                    flippedCards += 2;
-                    //CSS: taken
-                    //arrays entleeren
-                    cardList.splice(0, 2);
-                    cardId.splice(0, 2);
-                    if (flippedCards == cardInfo.length) {
-                        alert("Gratulation!");
-                        document.getElementById('memoryBoard');
-                    }
+        if (flippedCards < 2) {
+            flippedCards++;
+            if (flippedCards == 1) {
+                if (x.className = "hidden") {
+                    x.classList.remove("hidden");
+                    x.classList.add("visible");
                 }
-                else {
+            }
+            else if (flippedCards == 2) {
+                if (x.className = "hidden") {
+                    x.classList.remove("hidden");
+                    x.classList.add("visible");
+                }
+                setTimeout(compareCards, 2000);
+                function compareCards() {
+                    var card1 = document.getElementsByClassName("visible")[0];
+                    var card2 = document.getElementsByClassName("visible")[1];
+                    console.log("card1:" + card1);
+                    console.log("card2:" + card2);
+                    if (card1.innerHTML == card2.innerHTML) {
+                        if (card1.className = "visible") {
+                            card1.classList.remove("visible");
+                            card1.classList.add("taken");
+                            console.log("taken1");
+                        }
+                        if (card2.className = "visible") {
+                            card2.classList.remove("visible");
+                            card2.classList.add("taken");
+                            console.log("taken2");
+                        }
+                    }
+                    else {
+                        if (card1.className = "visible") {
+                            card1.classList.remove("visible");
+                            card1.classList.add("hidden");
+                            console.log("hidden1");
+                        }
+                        if (card2.className = "visible") {
+                            card2.classList.remove("visible");
+                            card2.classList.add("hidden");
+                            console.log("hidden2");
+                        }
+                    }
+                    flippedCards = 0;
                 }
             }
         }

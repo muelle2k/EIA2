@@ -62,7 +62,7 @@ namespace memorySpiel {
 
     let output: number = inputPlayers();
 
-    console.log(output);
+    console.log("inputPlayers:" + output);
 
 
 
@@ -132,18 +132,21 @@ namespace memorySpiel {
             childNodeHTML += "<div class='hidden";
             //childNodeHTML += randomStatus();
             childNodeHTML += "'id='Karte" + i + "'>";
-            childNodeHTML += "<p class='info'>";
+            childNodeHTML += "<p>";
             childNodeHTML += cardList[random];
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";
             childNodeHTML += " </div> ";
 
             node.innerHTML += childNodeHTML;
-            console.log("Länge Cardlist nach Generate, " + cardList.length)
-            let content: string = cardList[random];
+            console.log("Länge Cardlist nach generateCards: " + cardList.length)
+            //let content: string = cardList[random];
+            // cardList.push(content)
+            console.log("cardList:" + cardList);
 
-            let removed = cardList.splice(random, 1);
-            console.log(cardList);
+            let removed = cardInfo.splice(random, 1);
+
+            console.log("cardInfo:" + cardInfo);
 
             i++;
         }
@@ -171,14 +174,11 @@ namespace memorySpiel {
             childNodeHTML += "Punkte"; //Hier komm dann die Punktenanz
             childNodeHTML += "</div>";
 
-
-            console.log("HTML-text" + childNodeHTML);
-
             node.innerHTML += childNodeHTML;
 
             let inhaltPlayer: number = players[output];
 
-            console.log(players);
+            console.log("inhaltPlayers:" + players);
 
             i++;
 
@@ -188,20 +188,20 @@ namespace memorySpiel {
 
 
     //Status der Karten
-  /*  function randomStatus() {
-        let randomStatus = Math.random();
-        if (randomStatus <= .25) {
-            return "hidden";
-        }
-        else if (randomStatus > .25 && randomStatus <= .75) {
-            return "hidden";
-        }
-        else if (randomStatus > .75) {
-            return "visible";
-        }
-    }
-
-*/
+    /*  function randomStatus() {
+          let randomStatus = Math.random();
+          if (randomStatus <= .25) {
+              return "hidden";
+          }
+          else if (randomStatus > .25 && randomStatus <= .75) {
+              return "hidden";
+          }
+          else if (randomStatus > .75) {
+              return "visible";
+          }
+      }
+  
+  */
 
 
     window.addEventListener("load", init);
@@ -212,71 +212,69 @@ namespace memorySpiel {
         let div = document.getElementsByClassName("card");
         for (let i: number = 0; i < div.length; i++) {
 
-            div[i].addEventListener("click", clickHandler);
+            div[i].addEventListener("click", clickCard);
         }
     }
 
-    function clickHandler(_event: MouseEvent): void {
+    function clickCard(_event: Event): void {
 
         console.log(_event.target);
         let x: HTMLElement = <HTMLElement>_event.target; //hiermit greife ich auf die classes 
         /* console.log(x.innerHTML); //x.className
          x.className = "visible";  //damit veränder ich die class Names 
         */
-        if (x.className = "card") {
-            flippedCards += 2;
-            if (x.className = "hidden") {
-                x.classList.remove("hidden");
-                x.classList.add("visible");
-            }
-        } if (flippedCards == 2) {
-            //setTimeout(compareCards, 2000);
-        }
-    }
 
-  /*  function filterCardsBY(_filter: string): HTMLElement[]{
-        return cards.filter
-        }
+        if (flippedCards < 2) {
+            flippedCards++;
+            if (flippedCards == 1) {
+                if (x.className = "hidden") {
+                    x.classList.remove("hidden");
+                    x.classList.add("visible");
+                }
+            } else if (flippedCards == 2) {
+                if (x.className = "hidden") {
+                    x.classList.remove("hidden");
+                    x.classList.add("visible");
+                }
+                setTimeout(compareCards, 2000);
 
-    function compareCards(): void {
-        let openCards: HTMLElement[] = filterCardsBy("visible");
+                function compareCards() {
+                    let card1 = document.getElementsByClassName("visible")[0];
+                    let card2 = document.getElementsByClassName("visible")[1];
 
-    }
-*/
+                    console.log("card1:" + card1)
+                    console.log("card2:" + card2)
 
+                    if (card1.innerHTML == card2.innerHTML) {
+                        if (card1.className = "visible") {
+                            card1.classList.remove("visible");
+                            card1.classList.add("taken");
+                            console.log("taken1");
+                        }
+                        if (card2.className = "visible") {
+                            card2.classList.remove("visible");
+                            card2.classList.add("taken");
+                            console.log("taken2");
+                        }
 
-    //Karten umdrehen und vergleichen 
-    function flipCards(card: string, value: string): void {  //Geht das so mit card und value? Event? CSS cursor Pointer reicht das?
-
-        if (cardId.length == 0 && cardList.length < 2) {
-            //CSS: visible
-            if (cardList.length == 0) {
-                cardList.push(value);
-                cardId.push(card);
-            }
-            else if (cardList.length == 1) {
-                cardList.push(value);
-                cardId.push(card);
-                if (cardList[0] == cardList[1]) {   // Karten bzw. Buchstaben werden verglichen 
-                    flippedCards += 2;
-                    //CSS: taken
-                    //arrays entleeren
-                    cardList.splice(0, 2);
-                    cardId.splice(0, 2);
-
-                    if (flippedCards == cardInfo.length) {
-                        alert("Gratulation!")
-
-                        document.getElementById('memoryBoard')
-                        //neues Spiel aufrufen
                     }
-                } else {
-                    //CSS: hidden auf beide umgedrehten Karten
+                    else {
+                        if (card1.className = "visible") {
+                            card1.classList.remove("visible");
+                            card1.classList.add("hidden");
+                            console.log("hidden1");
+                        }
+                        if (card2.className = "visible") {
+                            card2.classList.remove("visible");
+                            card2.classList.add("hidden");
+                            console.log("hidden2");
+                        }
+                        
+                    }flippedCards = 0;
                 }
             }
         }
     }
-
 
 
 
