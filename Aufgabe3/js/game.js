@@ -160,6 +160,8 @@ var memorySpiel;
                 function compareCards() {
                     var card1 = document.getElementsByClassName("visible")[0];
                     var card2 = document.getElementsByClassName("visible")[1];
+                    console.log("cardList.length:" + cardList.length);
+                    console.log("cardId:" + cardId);
                     console.log("card1:" + card1);
                     console.log("card2:" + card2);
                     if (card1.innerHTML == card2.innerHTML) {
@@ -173,6 +175,10 @@ var memorySpiel;
                             card2.classList.add("taken");
                             console.log("taken2");
                         }
+                        cardId.push(card1);
+                        cardId.push(card2);
+                        cardId.push(card1);
+                        cardId.push(card2);
                     }
                     else {
                         if (card1.className = "visible") {
@@ -187,6 +193,9 @@ var memorySpiel;
                         }
                     }
                     flippedCards = 0;
+                }
+                if (cardId.length == cardList.length) {
+                    alert("Du hast es geschafft. Gratulation!");
                 }
             }
         }

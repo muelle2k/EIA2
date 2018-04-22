@@ -13,7 +13,7 @@ namespace memorySpiel {
     let numPlayer: number;
 
     //memory
-    let cardId: string[] = [];
+    let cardId: HTMLElement[] = [];
     let flippedCards: number = 0;
 
 
@@ -239,8 +239,12 @@ namespace memorySpiel {
                 setTimeout(compareCards, 2000);
 
                 function compareCards() {
-                    let card1 = document.getElementsByClassName("visible")[0];
-                    let card2 = document.getElementsByClassName("visible")[1];
+                    let card1: HTMLElement = <HTMLElement>document.getElementsByClassName("visible")[0];
+                    let card2: HTMLElement = <HTMLElement>document.getElementsByClassName("visible")[1];
+
+                    console.log("cardList.length:" + cardList.length);
+
+                    console.log("cardId:" + cardId);
 
                     console.log("card1:" + card1)
                     console.log("card2:" + card2)
@@ -256,6 +260,10 @@ namespace memorySpiel {
                             card2.classList.add("taken");
                             console.log("taken2");
                         }
+                        cardId.push(card1);
+                        cardId.push(card2);
+                        cardId.push(card1);
+                        cardId.push(card2);
 
                     }
                     else {
@@ -269,12 +277,16 @@ namespace memorySpiel {
                             card2.classList.add("hidden");
                             console.log("hidden2");
                         }
-                        
-                    }flippedCards = 0;
+
+                    } flippedCards = 0;
+                } if (cardId.length == cardList.length) {
+                    alert("Du hast es geschafft. Gratulation!");
                 }
             }
+
         }
     }
+
 
 
 
@@ -299,3 +311,5 @@ namespace memorySpiel {
     // Add EventListener 
     document.addEventListener('DOMContentLoaded', main);
 }
+
+
