@@ -169,16 +169,16 @@ var memorySpiel;
                             card1.classList.remove("visible");
                             card1.classList.add("taken");
                             console.log("taken1");
+                            cardId.push(card1);
+                            cardId.push(card1);
                         }
                         if (card2.className = "visible") {
                             card2.classList.remove("visible");
                             card2.classList.add("taken");
                             console.log("taken2");
+                            cardId.push(card2);
+                            cardId.push(card2);
                         }
-                        cardId.push(card1);
-                        cardId.push(card2);
-                        cardId.push(card1);
-                        cardId.push(card2);
                     }
                     else {
                         if (card1.className = "visible") {
@@ -194,9 +194,8 @@ var memorySpiel;
                     }
                     flippedCards = 0;
                 }
-                if (cardId.length == cardList.length) {
+                if (cardId.length == cardList.length)
                     alert("Du hast es geschafft. Gratulation!");
-                }
             }
         }
     }

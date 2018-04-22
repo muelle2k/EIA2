@@ -223,7 +223,6 @@ namespace memorySpiel {
         /* console.log(x.innerHTML); //x.className
          x.className = "visible";  //damit veränder ich die class Names 
         */
-
         if (flippedCards < 2) {
             flippedCards++;
             if (flippedCards == 1) {
@@ -242,6 +241,7 @@ namespace memorySpiel {
                     let card1: HTMLElement = <HTMLElement>document.getElementsByClassName("visible")[0];
                     let card2: HTMLElement = <HTMLElement>document.getElementsByClassName("visible")[1];
 
+
                     console.log("cardList.length:" + cardList.length);
 
                     console.log("cardId:" + cardId);
@@ -254,38 +254,41 @@ namespace memorySpiel {
                             card1.classList.remove("visible");
                             card1.classList.add("taken");
                             console.log("taken1");
+                            cardId.push(card1);
+                            cardId.push(card1);
                         }
                         if (card2.className = "visible") {
                             card2.classList.remove("visible");
                             card2.classList.add("taken");
                             console.log("taken2");
+                            cardId.push(card2);
+                            cardId.push(card2);
                         }
-                        cardId.push(card1);
-                        cardId.push(card2);
-                        cardId.push(card1);
-                        cardId.push(card2);
+
+
 
                     }
                     else {
                         if (card1.className = "visible") {
                             card1.classList.remove("visible");
                             card1.classList.add("hidden");
+
                             console.log("hidden1");
                         }
                         if (card2.className = "visible") {
                             card2.classList.remove("visible");
                             card2.classList.add("hidden");
+
                             console.log("hidden2");
                         }
-
                     } flippedCards = 0;
-                } if (cardId.length == cardList.length) {
+                } if (cardId.length == cardList.length)
                     alert("Du hast es geschafft. Gratulation!");
-                }
-            }
 
+            }
         }
     }
+
 
 
 
