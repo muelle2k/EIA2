@@ -138,26 +138,53 @@ var memorySpiel;
     function clickCard(_event) {
         console.log(_event.target);
         var x = _event.target; //hiermit greife ich auf die classes 
-        /* console.log(x.innerHTML); //x.className
-         x.className = "visible";  //damit veränder ich die class Names
-        */
-        if (flippedCards < 2) {
+        if (x.classList.contains("hidden")) {
+            x.classList.remove("hidden");
+            x.classList.add("visible");
             flippedCards++;
-            if (flippedCards == 1) {
-                if (x.className = "hidden") {
-                    x.classList.remove("hidden");
-                    x.classList.add("visible");
-                }
-            }
-            else if (flippedCards == 2) {
-                if (x.className = "hidden") {
-                    x.classList.remove("hidden");
-                    x.classList.add("visible");
-                }
+            if (flippedCards == 2) {
                 setTimeout(compareCards, 2000);
+            }
+            if (flippedCards > 2) {
+                x.classList.remove("visible");
+                x.classList.add("hidden");
             }
         }
     }
+    /* if (x.className = "card") {
+        flippedCards++;
+        if (x.className = "hidden") {
+            x.classList.remove("hidden");
+            x.classList.add("visible");
+        }
+    }
+    if (flippedCards == 2) {
+        setTimeout(compareCards, 2000);
+    }
+    if (flippedCards > 2) {
+        x.classList.remove("visible");
+        x.classList.add("hidden");
+    }*/
+    /* console.log(x.innerHTML); //x.className
+     x.className = "visible";  //damit veränder ich die class Names
+    */
+    /*if (flippedCards < 2) {
+        flippedCards++;
+        if (flippedCards == 1) {
+            if (x.className = "hidden") {
+                x.classList.remove("hidden");
+                x.classList.add("visible");
+            }
+        }
+        else if (flippedCards == 2) {
+            if (x.className = "hidden") {
+                x.classList.remove("hidden");
+                x.classList.add("visible");
+            }
+            setTimeout(compareCards, 2000);
+        }
+    }
+    }*/
     //Karten werden verglichen
     function compareCards() {
         var card1 = document.getElementsByClassName("visible")[0];
