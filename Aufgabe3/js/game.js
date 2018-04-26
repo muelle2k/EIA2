@@ -3,6 +3,7 @@ var memorySpiel;
     //Karten
     var cardInfo = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     var cardList = [];
+    var cardList1 = [];
     //Spieler
     var playerList = [];
     var players = [1, 2, 3, 4];
@@ -47,6 +48,8 @@ var memorySpiel;
             var content = cardInfo[0];
             cardList.push(content);
             cardList.push(content);
+            cardList1.push(content);
+            cardList1.push(content);
             var removed = cardInfo.splice(0, 1);
         }
         console.log("Content CardList:" + cardList);
@@ -69,25 +72,26 @@ var memorySpiel;
         var i = 0;
         while (i < (y * 2)) {
             var min = 0;
-            var max = (cardList.length);
-            var random = Math.floor(Math.random() * Math.floor(max));
+            var max = cardList.length;
+            var random = Math.floor(Math.random() * (max - min) + min); // Hier es kommen manche BUchstaben doppelt
             console.log("Card:" + i);
             console.log("random:" + random);
             childNodeHTML = "<div class='card'>";
-            childNodeHTML += "<div class='hidden";
+            childNodeHTML += "<div class='hidden'";
             //childNodeHTML += randomStatus();
-            childNodeHTML += "'id='Karte" + i + "'>";
+            childNodeHTML += "id='Karte" + i + "'>";
             childNodeHTML += "<p>";
             childNodeHTML += cardList[random];
+            console.log("cardList[random]:" + cardList[random]);
             childNodeHTML += "</p>";
-            childNodeHTML += " </div> ";
-            childNodeHTML += " </div> ";
+            childNodeHTML += "</div>";
+            childNodeHTML += "</div>";
             node.innerHTML += childNodeHTML;
             console.log("Länge Cardlist nach generateCards: " + cardList.length);
             //let content: string = cardList[random];
-            // cardList.push(content)
+            //cardList.push(content)
             console.log("cardList:" + cardList);
-            var removed = cardInfo.splice(random, 1);
+            var removed = cardList.splice(random, 1);
             console.log("cardInfo:" + cardInfo);
             i++;
         }
@@ -222,7 +226,7 @@ var memorySpiel;
         }
         console.log("flippedCards:" + flippedCards);
         flippedCards = 0;
-        if (takenCards == cardList.length) {
+        if (takenCards == cardList1.length) {
             alert("Gratuliere Dir! Du hast es echt geschafft.");
         }
     }

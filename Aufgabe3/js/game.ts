@@ -4,6 +4,7 @@ namespace memorySpiel {
     //Karten
     let cardInfo: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     let cardList: string[] = [];
+    let cardList1: string[] = []
 
     //Spieler
     let playerList: number[] = [];
@@ -77,6 +78,8 @@ namespace memorySpiel {
             let content: string = cardInfo[0];
             cardList.push(content);
             cardList.push(content);
+            cardList1.push(content);
+            cardList1.push(content);
 
             let removed = cardInfo.splice(0, 1);
 
@@ -120,32 +123,35 @@ namespace memorySpiel {
         let childNodeHTML: string;
 
         let i: number = 0;
+
         while (i < (y * 2)) {
             let min: number = 0;
-            let max: number = (cardList.length);
+            let max: number = cardList.length;
 
-            let random: number = Math.floor(Math.random() * Math.floor(max));
+            let random: number = Math.floor(Math.random() * (max - min) + min);// Hier es kommen manche BUchstaben doppelt
 
             console.log("Card:" + i);
             console.log("random:" + random);
 
             childNodeHTML = "<div class='card'>";
-            childNodeHTML += "<div class='hidden";
+            childNodeHTML += "<div class='hidden'";
             //childNodeHTML += randomStatus();
-            childNodeHTML += "'id='Karte" + i + "'>";
+            childNodeHTML += "id='Karte" + i + "'>";
             childNodeHTML += "<p>";
             childNodeHTML += cardList[random];
+            console.log("cardList[random]:" + cardList[random]);
             childNodeHTML += "</p>";
-            childNodeHTML += " </div> ";
-            childNodeHTML += " </div> ";
+            childNodeHTML += "</div>";
+            childNodeHTML += "</div>";
 
             node.innerHTML += childNodeHTML;
             console.log("Länge Cardlist nach generateCards: " + cardList.length)
             //let content: string = cardList[random];
-            // cardList.push(content)
+            //cardList.push(content)
             console.log("cardList:" + cardList);
 
-            let removed = cardInfo.splice(random, 1);
+
+            let removed = cardList.splice(random, 1);
 
             console.log("cardInfo:" + cardInfo);
 
@@ -222,7 +228,7 @@ namespace memorySpiel {
 
         console.log(_event.target);
         let x: HTMLElement = <HTMLElement>_event.target; //hiermit greife ich auf die classes 
-        
+
         if (x.classList.contains("hidden")) {
             x.classList.remove("hidden");
             x.classList.add("visible");
@@ -325,7 +331,7 @@ namespace memorySpiel {
         } console.log("flippedCards:" + flippedCards);
         flippedCards = 0;
 
-        if (takenCards == cardList.length) {
+        if (takenCards == cardList1.length) {
             alert("Gratuliere Dir! Du hast es echt geschafft.");
         }
     }
