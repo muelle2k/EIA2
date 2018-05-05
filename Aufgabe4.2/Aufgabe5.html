@@ -1,0 +1,98 @@
+<!--Aufgabe: (Aufgabe 1)
+		Name: Patrick Müller-Klug
+		Matrikel: 
+		
+		Datum:
+		Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. 
+		Er wurde	 nicht kopiert und auch nicht diktiert.-->
+
+<!DOCTYPE html>
+<html lang="de">
+<meta charset="UTF-8">
+<head>
+<title>MEMORY</title>
+<link rel="stylesheet" type="text/css" href="Aufgabe5.css">
+<meta name="viewport" content="width=device-width, initial-scale:1.0">
+<script src="FileDecks.js" type="text/javascript" charset="utf-8"></script>
+<script src="Players.js" type="text/javascript" charset="utf-8"></script>
+<script src="Aufgabe5.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+<div id="starteinstellungen">
+
+    <h2 class="ueberschrift">Memory</h2>
+
+    <br>
+    
+    <!-- Wenn ein Radiobutton geklickt wird, dann wird Funktion bearbeiteKartenSatzKlick ausgeführt. Als Parameter wird der gedrückte Button übergeben-->
+
+    <div id="kartensatz">
+        <h3>Kartensatz</h3>
+        <input type="radio" name="Radiogroup" value="animals" id="radio5" checked onclick="Aufgabe_5.radioCardClick(this)"/>
+        <label for="radio5">Zahlen</label>
+        <input type="radio" name="Radiogroup" value="planets" id="radio6" onclick="Aufgabe_5.radioCardClick(this)"/>
+        <label for="radio6">Buchstaben</label>
+        <input type="radio" name="Radiogroup" value="music" id="radio7" onclick="Aufgabe_5.radioCardClick(this)"/>
+        <label for="radio7">Tiere</label>
+    </div>
+
+    <br>
+    
+    <!-- This.value = Nur der Wert wird übergeben-->
+
+    <div>
+        <h3>Kartenpaare</h3>
+        <input id="kartenpaare" type="range" name="Stepper" step="1" min="5" max="10" value="5" oninput="Aufgabe_5.onInputEvent(this.value)"/>
+        <label for="kartenpaare" id="kartenpaare-label">5</label>
+    </div>
+
+    <br>
+  
+        <div id="spieleranzahl">
+        <h3>Spieleranzahl</h3>
+        
+
+        <!-- Wenn ein Radiobutton geklickt wird, dann wird Funktion bearbeiteSpielerZahlKlick ausgeführt. Als Parameter wird der gedrückte Button übergeben-->
+        <!-- This= Das momentane Html Element-->
+        
+        <input type="radio" name="radio" value="1" id="1" checked onclick="Aufgabe_5.radioSpielerClick(this)"/> <!-- Checked, damit min. 1 Spieler vorgeben ist-->
+        <label for="1">1</label>
+        <input type="radio" name="radio" value="2" id="2" onclick="Aufgabe_5.radioSpielerClick(this)"/>
+        <label for="2">2</label>
+        <input type="radio" name="radio" value="3" id="3" onclick="Aufgabe_5.radioSpielerClick(this)"/>
+        <label for="3">3</label>
+        <input type="radio" name="radio" value="4" id="4" onclick="Aufgabe_5.radioSpielerClick(this)"/>
+        <label for="4">4</label>
+    </div>
+
+    <br>
+
+    <div id="name">
+        <h3>Spielernamen</h3>       
+        <h4 id="player1-label">Spieler 1</h4>
+        <input id="player1" type="text" name="Text" placeholder="Wie heißt du?" value="" required /><!-- aktivierten Input-->
+        <h4 id="player2-label" style="opacity: 0.33;">Spieler 2</h4>
+        <input id="player2" type="text" name="Text" placeholder="Wie heißt du?" value="" disabled/><!-- deaktivierten Input-->
+        <h4 id="player3-label" style="opacity: 0.33;">Spieler 3</h4>
+        <input id="player3" type="text" name="Text" placeholder="Wie heißt du?" value="" disabled/><!-- deaktivierten Input-->
+        <h4 id="player4-label" style="opacity: 0.33;">Spieler 4</h4>
+        <input id="player4" type="text" name="Text" placeholder="Wie heißt du?" value="" disabled/><!-- deaktivierten Input-->
+    </div>
+
+    <div id="spielstart">
+        <button onclick="Aufgabe_5.main()">LOS GEHT'S!</button>
+    </div>
+
+</div>
+
+<div id="Spielbrett">
+    <div id="Spielfeld"></div>
+    <footer>
+    <div id="Spielerinfo"></div>
+    </footer>
+</div>
+
+</body>
+</html>
