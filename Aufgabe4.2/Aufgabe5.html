@@ -1,10 +1,14 @@
-<!--Aufgabe: (Aufgabe 1)
+<!--    
+
+		Aufgabe: Aufgabe 4.2 Memory mit Userinterface
 		Name: Patrick Müller-Klug
-		Matrikel: 
+		Matrikel: 257836
 		
-		Datum:
+		Datum: 06.05.2018
 		Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. 
-		Er wurde	 nicht kopiert und auch nicht diktiert.-->
+		Er wurde	 nicht kopiert und auch nicht diktiert.
+		
+		-->
 
 <!DOCTYPE html>
 <html lang="de">
@@ -31,11 +35,11 @@
     <div id="kartensatz">
         <h3>Kartensatz</h3>
         <input type="radio" name="Radiogroup" value="animals" id="radio5" checked onclick="Aufgabe_5.radioCardClick(this)"/>
-        <label for="radio5">Zahlen</label>
-        <input type="radio" name="Radiogroup" value="planets" id="radio6" onclick="Aufgabe_5.radioCardClick(this)"/>
+        <label for="radio5">Tiere</label>
+        <input type="radio" name="Radiogroup" value="buchstaben" id="radio6" onclick="Aufgabe_5.radioCardClick(this)"/>
         <label for="radio6">Buchstaben</label>
-        <input type="radio" name="Radiogroup" value="music" id="radio7" onclick="Aufgabe_5.radioCardClick(this)"/>
-        <label for="radio7">Tiere</label>
+        <input type="radio" name="Radiogroup" value="zahlen" id="radio7" onclick="Aufgabe_5.radioCardClick(this)"/>
+        <label for="radio7">Zahlen</label>
     </div>
 
     <br>
@@ -53,9 +57,6 @@
         <div id="spieleranzahl">
         <h3>Spieleranzahl</h3>
         
-
-        <!-- Wenn ein Radiobutton geklickt wird, dann wird Funktion bearbeiteSpielerZahlKlick ausgeführt. Als Parameter wird der gedrückte Button übergeben-->
-        <!-- This= Das momentane Html Element-->
         
         <input type="radio" name="radio" value="1" id="1" checked onclick="Aufgabe_5.radioSpielerClick(this)"/> <!-- Checked, damit min. 1 Spieler vorgeben ist-->
         <label for="1">1</label>

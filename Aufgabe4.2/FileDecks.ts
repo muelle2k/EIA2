@@ -19,7 +19,7 @@ namespace Aufgabe_5 {
 
         decks["animals"] = {
             name: "animals",
-            content: ["Hase", "Koala", "Panda", "Affe", "Tiger", "Löwe", "Zebra", "Adler", "Hai", "Aal"],
+            content: ["Hase", "Koala", "Panda", "Affe", "Tiger", "Löwe", "Zebra", "Adler", "Hai", "Aal"], //10 Inahlte
             color: "#094a21",
             font: "Limelight",
             size: 20,
@@ -37,7 +37,7 @@ namespace Aufgabe_5 {
 
         decks["zahlen"] = {
             name: "zahlen",
-            content: ["100", "110", "011", "001", "010", "101", "111", "000"],
+            content: ["100", "110", "011", "001", "010", "101", "111", "000"], //8 Inhale
             color: "blue",
             font: "Arial",
             size: 20,
