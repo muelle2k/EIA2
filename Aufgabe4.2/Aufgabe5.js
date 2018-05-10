@@ -1,23 +1,23 @@
 var Aufgabe_5;
 (function (Aufgabe_5) {
-    var numPlayers = 0;
+    let numPlayers = 0;
     Aufgabe_5.numPairs = 5;
-    var openCards = [];
+    let openCards = [];
     //Variable des momentanen Kartendecks
-    var currentCardDeck = undefined;
-    var flippedCards = 0;
+    let currentCardDeck = undefined;
+    let flippedCards = 0;
     //Zählvariable l für die Gratulation erstellen
-    var l = 0;
-    var clickGo = true;
+    let l = 0;
+    let clickGo = true;
     //Karten speichern
-    var cardArray = [];
+    let cardArray = [];
     //Spieleranzahl und Punktzahl
-    var playerNames = [];
-    var score = [0, 0, 0, 0]; //Punktestand = 0, ist vordefiniert
+    let playerNames = [];
+    let score = [0, 0, 0, 0]; //Punktestand = 0, ist vordefiniert
     window.addEventListener("click", clickCard);
     Aufgabe_5.createDecks();
     function clickCard(_event) {
-        var target = _event.target;
+        let target = _event.target;
         console.log(_event);
         //Bedingung umgedrehte Karte und die Klicks müssen angenommen werden
         if (target.classList.contains("hidden") && clickGo) {
@@ -34,7 +34,7 @@ var Aufgabe_5;
                 //vergleich die visible Karten
                 if (openCards[0].innerText === openCards[1].innerText) {
                     //setTimeout Funktion
-                    setTimeout(function () {
+                    setTimeout(() => {
                         //Die Karten werden genommen
                         openCards[0].classList.add("taken");
                         openCards[1].classList.add("taken");
@@ -51,7 +51,7 @@ var Aufgabe_5;
                 }
                 else {
                     //setTimeout Funktion
-                    setTimeout(function () {
+                    setTimeout(() => {
                         //ungleiche Kartenpaare werden wieder umgedreht
                         openCards[0].classList.add("hidden");
                         openCards[1].classList.add("hidden");
@@ -66,10 +66,10 @@ var Aufgabe_5;
         }
     }
     function shuffleCards() {
-        var i = cardArray.length;
-        var j = 0;
+        let i = cardArray.length;
+        let j = 0;
         //Variable temp wird definiert als string ohne Textinhalt.
-        var temp = "";
+        let temp = "";
         //Variable i(Länge des Arrays) wird immer um 1 herunter gezählt und muss immer größer 0 sein
         while (--i > 0) {
             //j=0, eine random Zahl zwischen 0 und 1 tritt dadurch auf
@@ -82,17 +82,17 @@ var Aufgabe_5;
     //Spielfeld wird erzeugt
     //Funktion wird erstellt, um das Hauptspielfeld zu erzeugen
     function createGame() {
-        var node = document.getElementById("Spielfeld");
+        let node = document.getElementById("Spielfeld");
         //AufrufshuffleCards damit die Karten bei jedem Spiel gemischt werden
         shuffleCards();
         //Überschrift wird erstellt
-        var header = document.createElement("h2");
+        let header = document.createElement("h2");
         header.innerText = "Spielbrett";
         node.appendChild(header);
         //Spielfeld innerhalb eines Divs
-        var spielFeld = document.createElement("div");
-        for (var i = 0; i < cardArray.length; i++) {
-            var card = document.createElement("div");
+        let spielFeld = document.createElement("div");
+        for (let i = 0; i < cardArray.length; i++) {
+            let card = document.createElement("div");
             card.id = i.toString();
             card.setAttribute("attr", i.toString());
             card.classList.add(cardArray[i]);
@@ -111,12 +111,12 @@ var Aufgabe_5;
     //Funktion playerInfo erstellen
     function playerInfo() {
         //Aufruf bzw Zugriff mit der id im Html Dokument
-        var node = document.getElementById("Spielerinfo");
+        let node = document.getElementById("Spielerinfo");
         //HTML string
-        var childNodeHTML = "";
+        let childNodeHTML = "";
         //Div erzeugen
         childNodeHTML += "<div>";
-        for (var i = 0; i < playerNames.length; i++) {
+        for (let i = 0; i < playerNames.length; i++) {
             //div Box
             childNodeHTML += "<div class='player' id=Spieler";
             childNodeHTML += i;
@@ -146,11 +146,11 @@ var Aufgabe_5;
     //Hauptfunktion
     function main() {
         //Funtion für die Spielerabfrage erstellen
-        var spielerAnzahl;
+        let spielerAnzahl;
         //Variable eingabe als NodeListOfElement
         //NodeList Objekte sind Sammlungen von Knoten
-        var eingabe = document.getElementById("spieleranzahl").getElementsByTagName("input");
-        for (var i = 0; i < eingabe.length; i++) {
+        let eingabe = document.getElementById("spieleranzahl").getElementsByTagName("input");
+        for (let i = 0; i < eingabe.length; i++) {
             //Spieleranzahl wird hochgezählt 
             if (eingabe[i].checked) {
                 spielerAnzahl = i + 1;
@@ -160,7 +160,7 @@ var Aufgabe_5;
         //Eingabe Spielernamen
         eingabe = document.getElementById("name").getElementsByTagName("input");
         //Wenn keine eingabe Spielername, dann Spielername: Patrick
-        for (var i = 0; i < eingabe.length; i++) {
+        for (let i = 0; i < eingabe.length; i++) {
             if (eingabe[i].value == "" && i == 0) {
                 playerNames.push("Patrick");
             }
@@ -192,7 +192,7 @@ var Aufgabe_5;
     //Karten werden hinzugefügt
     function createCardArray(karten) {
         //Kartenpaare werden erzeugt
-        for (var i = 0; i < Aufgabe_5.numPairs; i++) {
+        for (let i = 0; i < Aufgabe_5.numPairs; i++) {
             cardArray.push(karten[i]);
             cardArray.push(karten[i]);
         }
@@ -205,10 +205,10 @@ var Aufgabe_5;
     Aufgabe_5.radioCardClick = radioCardClick;
     //SliderAnzahl
     function repopulateCardForm() {
-        var kartenPaareElement = document.getElementById("kartenpaare");
+        let kartenPaareElement = document.getElementById("kartenpaare");
         kartenPaareElement.max = currentCardDeck.content.length.toString();
-        var maxWert = currentCardDeck.content.length;
-        var momentanerWert = parseInt(kartenPaareElement.value);
+        let maxWert = currentCardDeck.content.length;
+        let momentanerWert = parseInt(kartenPaareElement.value);
         if (maxWert < momentanerWert) {
             kartenPaareElement.value = maxWert.toString();
         }
@@ -217,11 +217,11 @@ var Aufgabe_5;
     }
     //Spieleranzahl und Spielername
     function radioSpielerClick(element) {
-        var spielerZahl = parseInt(element.value);
-        for (var i = 1; i <= 4; i++) {
+        let spielerZahl = parseInt(element.value);
+        for (let i = 1; i <= 4; i++) {
             //`player${i}`: Innerhalb eines String wird Javascripts aufgerufen, zur Bearbeitung  
-            var inputElement = document.getElementById("player" + i);
-            var labelElement = document.getElementById("player" + i + "-label");
+            let inputElement = document.getElementById(`player${i}`);
+            let labelElement = document.getElementById(`player${i}-label`);
             if (i <= spielerZahl) {
                 inputElement.disabled = false;
                 labelElement.style.opacity = "1";
