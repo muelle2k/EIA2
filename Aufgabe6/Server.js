@@ -23,7 +23,7 @@ var Node;
         if (query["method"] == "StudentData") {
             let student = JSON.parse(query["data"].toString());
             studis[student.matrikel.toString()] = student;
-            _response.write("Student added!");
+            _response.write("Studentdaten hinzugefügt!");
             _response.end();
         }
         if (query["method"] == "refreshData") {
