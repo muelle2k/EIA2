@@ -3,7 +3,7 @@ namespace L06_Interface {
     window.addEventListener("load", init);
     //let address: string = "http://localhost:8100";
     let address: string = "https://eia2nodeserver.herokuapp.com/";
-   
+
 
 
     function init(_event: Event): void {
@@ -47,7 +47,7 @@ namespace L06_Interface {
 
     }
 
-    
+
     function refreshData(_event: Event): void {
         sendData("refreshData");
     }
@@ -102,6 +102,9 @@ namespace L06_Interface {
             xhr.onload = function() {
                 console.log(xhr.responseText)
             }
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                alert("Daten empfangen.");
+            }
         }
         else if (method == "refreshData") {
             xhr.onload = function() {
@@ -116,6 +119,7 @@ namespace L06_Interface {
 
         //Sende Request zum Server
         xhr.send();
+        console.log("Daten gesendet.");
     }
 
 }
