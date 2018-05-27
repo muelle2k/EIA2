@@ -39,7 +39,7 @@ namespace Node {
         if (query["method"] == "StudentData") {
             let student = <L06_Interface.Studi>JSON.parse(query["data"].toString());
             studis[student.matrikel.toString()] = student;
-            _response.write("Student added!");
+            _response.write("Studentdaten hinzugefügt!");
             _response.end();
         }
         
