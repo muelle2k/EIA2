@@ -6,7 +6,7 @@ namespace Node {
     let studis: L06_Interface.Studis = {};
 
     interface AssocStringString {
-        [key: string]: string;
+        [key: string]: string | string[];
     }
 
 

@@ -1,8 +1,8 @@
-var L06_Interfaces;
-(function (L06_Interfaces) {
+var L06_Interface;
+(function (L06_Interface) {
     window.addEventListener("load", init);
     //let address: string = "http://localhost:8100";
-    let address = "https://eia2nodeserver.herokuapp.com";
+    let address = "https://eia2nodeserver.herokuapp.com/";
     function init(_event) {
         console.log("Init");
         let insertButton = document.getElementById("insert");
@@ -29,10 +29,10 @@ var L06_Interfaces;
         console.log(studi.age);
         console.log(studi["age"]);
         // Datensatz im assoziativen Array unter der Matrikelnummer speichern
-        L06_Interfaces.studiHomoAssoc[matrikel] = studi;
-        console.log(L06_Interfaces.studiHomoAssoc);
+        L06_Interface.studiHomoAssoc[matrikel] = studi;
+        console.log(L06_Interface.studiHomoAssoc);
         // nur um das auch noch zu zeigen...
-        L06_Interfaces.studiSimpleArray.push(studi);
+        L06_Interface.studiSimpleArray.push(studi);
         sendData("StudentData", studi);
     }
     function refreshData(_event) {
@@ -42,8 +42,8 @@ var L06_Interfaces;
         let output = document.getElementsByTagName("textarea")[0];
         output.value = "";
         // for-in-Schleife iteriert über die Schlüssel des assoziativen Arrays
-        for (let matrikel in L06_Interfaces.studiHomoAssoc) {
-            let studi = L06_Interfaces.studiHomoAssoc[matrikel];
+        for (let matrikel in L06_Interface.studiHomoAssoc) {
+            let studi = L06_Interface.studiHomoAssoc[matrikel];
             let line = matrikel + ": ";
             line += "Studiengang:" + studi.courseOfStudy;
             line += "," + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
@@ -55,7 +55,7 @@ var L06_Interfaces;
         let inputs = document.getElementsByTagName("input");
         let output = document.getElementsByTagName("textarea")[1];
         let matrikel = inputs[2].value;
-        let studi = L06_Interfaces.studiHomoAssoc[matrikel];
+        let studi = L06_Interface.studiHomoAssoc[matrikel];
         if (studi) {
             let line = matrikel + ":";
             line += studi.firstname + ", " + studi.name + ", " + studi.age + "Jahre";
@@ -82,12 +82,12 @@ var L06_Interfaces;
             xhr.onload = function () {
                 console.log("Refreshing Studentdata...");
                 //Überschreibe studiHomoAssoc mit der Antwort
-                L06_Interfaces.studiHomoAssoc = JSON.parse(xhr.responseText);
+                L06_Interface.studiHomoAssoc = JSON.parse(xhr.responseText);
                 refresh();
             };
         }
         //Sende Request zum Server
         xhr.send();
     }
-})(L06_Interfaces || (L06_Interfaces = {}));
+})(L06_Interface || (L06_Interface = {}));
 //# sourceMappingURL=ProcessForm.js.map

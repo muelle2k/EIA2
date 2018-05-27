@@ -2,7 +2,7 @@
 namespace L06_Interface {
     window.addEventListener("load", init);
     //let address: string = "http://localhost:8100";
-    let address: string = "https://eia2nodeserver.herokuapp.com";
+    let address: string = "https://eia2nodeserver.herokuapp.com/";
    
 
 

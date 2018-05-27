@@ -1,30 +1,35 @@
 "use strict";
-const Url = require("url"); // URL 
-const Http = require("http"); //HTTP wird erstellt im Code erstellt, damit einzelne HTTP.Objekte im Code angehängt werden können
+const Http = require("http");
+const Url = require("url");
 var Node;
 (function (Node) {
-    let port = process.env.PORT; //process.env.PORT wird als Umgebungsvar festgelegt für den gegebenen PORT
+    let studis = {};
+    let port = process.env.PORT;
     if (port == undefined)
-        port = 8100; //dann port = 8100
+        port = 8100;
     let server = Http.createServer(); //eigenen server creieren
-    server.addListener("listening", handleListen); //wenn server 'listening dann function handleListen aufrufen
-    server.addListener("request", handleRequest); //sever 'requeste' reagieren beibringen
+    server.addListener("listening", handleListen); //wenn server 'listening' dann function handleListen aufrufen
+    server.addListener("request", handleRequest); //server  reagiert darauf'request' 
     server.listen(port);
     function handleListen() {
         console.log("Ich höre?"); //ausgabe in console oder terminal
     }
     function handleRequest(_request, _response) {
         console.log("Ich höre Stimmen!");
-        let query = Url.parse(_request.url, true).query; //übersetzung in assoziatives array und umwandeln in js (/?a=10&b=20)
-        let a = parseInt(query["a"]);
-        let b = parseInt(query["b"]);
-        _response.setHeader("content-type", "text/html; charset=utf-8");
+        let query = Url.parse(_request.url, true).query; //übersetzung in assoziatives array und umwandeln in js 
+        _response.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         _response.write("Ich habe dich gehört<br/>");
-        for (let key in query)
-            _response.write("Die eingegebenen Query-Informationen: " + (query[key]) + "<br>");
-        _response.write("Das Ergebnis lautet: " + (a + b));
-        _response.end();
+        if (query["method"] == "StudentData") {
+            let student = JSON.parse(query["data"].toString());
+            studis[student.matrikel.toString()] = student;
+            _response.write("Student added!");
+            _response.end();
+        }
+        if (query["method"] == "refreshData") {
+            _response.write(JSON.stringify(studis));
+            _response.end();
+        }
     }
 })(Node || (Node = {}));
 //# sourceMappingURL=Server.js.map
