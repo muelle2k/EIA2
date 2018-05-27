@@ -53,6 +53,7 @@ namespace L06_Interface {
     }
 
     function refresh(): void {
+        console.log("refresh");
         let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
         output.value = "";
 
@@ -68,6 +69,7 @@ namespace L06_Interface {
     }
 
     function search(_event: Event): void {
+        console.log("search");
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
         let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[1];
         let matrikel: string = inputs[2].value;
@@ -79,8 +81,9 @@ namespace L06_Interface {
             line += studi.gender ? "(M)" : "(F)";
             line += ", Studiengang:" + studi.courseOfStudy;
 
-            output.value = line + "\n";
+            output.value = line;
         } else {
+            console.log("alert ausfuehren.");
             alert("Die angegebene Matrikelnummer ist nicht zu finden. Bitte nochmal versuchen.");
         }
 
@@ -102,9 +105,7 @@ namespace L06_Interface {
             xhr.onload = function() {
                 console.log(xhr.responseText)
             }
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                alert("Daten empfangen.");
-            }
+            
         }
         else if (method == "refreshData") {
             xhr.onload = function() {

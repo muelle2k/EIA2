@@ -39,6 +39,7 @@ var L06_Interface;
         sendData("refreshData");
     }
     function refresh() {
+        console.log("refresh");
         let output = document.getElementsByTagName("textarea")[0];
         output.value = "";
         // for-in-Schleife iteriert über die Schlüssel des assoziativen Arrays
@@ -52,6 +53,7 @@ var L06_Interface;
         }
     }
     function search(_event) {
+        console.log("search");
         let inputs = document.getElementsByTagName("input");
         let output = document.getElementsByTagName("textarea")[1];
         let matrikel = inputs[2].value;
@@ -61,9 +63,10 @@ var L06_Interface;
             line += studi.firstname + ", " + studi.name + ", " + studi.age + "Jahre";
             line += studi.gender ? "(M)" : "(F)";
             line += ", Studiengang:" + studi.courseOfStudy;
-            output.value = line + "\n";
+            output.value = line;
         }
         else {
+            console.log("alert ausfuehren.");
             alert("Die angegebene Matrikelnummer ist nicht zu finden. Bitte nochmal versuchen.");
         }
     }
@@ -88,6 +91,7 @@ var L06_Interface;
         }
         //Sende Request zum Server
         xhr.send();
+        console.log("Daten gesendet.");
     }
 })(L06_Interface || (L06_Interface = {}));
 //# sourceMappingURL=ProcessForm.js.map
