@@ -81,7 +81,7 @@ namespace L06_Interface {
             line += studi.gender ? "(M)" : "(F)";
             line += ", Studiengang:" + studi.courseOfStudy;
 
-            output.value = line;
+            output.value = line + "\n";
         } else {
             console.log("alert ausfuehren.");
             alert("Die angegebene Matrikelnummer ist nicht zu finden. Bitte nochmal versuchen.");
