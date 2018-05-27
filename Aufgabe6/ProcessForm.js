@@ -63,11 +63,10 @@ var L06_Interface;
             line += studi.firstname + ", " + studi.name + ", " + studi.age + "Jahre";
             line += studi.gender ? "(M)" : "(F)";
             line += ", Studiengang:" + studi.courseOfStudy;
-            output.value = line + "\n";
+            output.value = line;
         }
         else {
-            console.log("alert ausfuehren.");
-            alert("Die angegebene Matrikelnummer ist nicht zu finden. Bitte nochmal versuchen.");
+            output.value = "Keine Matrikelnummer gefunden!";
         }
     }
     function sendData(method, data = undefined) {
