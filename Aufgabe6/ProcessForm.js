@@ -8,7 +8,7 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 var aufgabe6;
 (function (aufgabe6) {
     window.addEventListener("load", init);
-    let address = "https://muelle2k-server.herokuapp.com";
+    let address = "https://muelle2k.herokuapp.com";
     let inputs = document.getElementsByTagName("input");
     function init(_event) {
         console.log("Init");
