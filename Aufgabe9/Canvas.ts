@@ -7,8 +7,8 @@ namespace L09_Canvas {
         crc2 = canvas.getContext("2d");
         console.log(crc2);
 
-        crc2.fillStyle = "rgba(255,0,0,0.5)";
-        crc2.fillRect(50, 50, 100, 50);
+        crc2.fillStyle = "rgba(0,0,270,0.25)";
+        
 
         drawDavidStar(300, 100);
         drawDavidStar(100, 200);
