@@ -6,13 +6,13 @@ var L09_Canvas;
         let canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         console.log(crc2);
-        crc2.fillStyle = "rgba(0,0,270,0.25)";
-        drawDavidStar(300, 100);
-        drawDavidStar(100, 200);
+        crc2.fillStyle = "rgba(0,0,500,0.6)";
+        crc2.fillRect(0, 0, 965, 1450);
+        //drawDavidStar(300, 100);
+        // drawDavidStar(100, 200);
         for (let i = 0; i < 100; i++) {
             let x = Math.random() * crc2.canvas.width;
             let y = Math.random() * crc2.canvas.height;
-            drawDavidStar(x, y);
         }
     }
     function drawDavidStar(_x, _y) {
