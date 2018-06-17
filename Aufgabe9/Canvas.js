@@ -70,7 +70,7 @@ var L09_Canvas;
                 let scale = Math.random() * 20;
                 crc2.beginPath();
                 crc2.arc(_x + width, _y + height, scale, 0, 30 * Math.PI);
-                crc2.fillStyle = "#ededed";
+                crc2.fillStyle = "rgba(188,210,238,0.6)";
                 crc2.stroke();
                 crc2.fill();
             }
