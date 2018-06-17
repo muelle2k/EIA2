@@ -33,10 +33,11 @@ var L09_Canvas;
             let y = Math.random() * crc2.canvas.height;
             drawFish1(x, y);
         }
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 15; i++) {
             let x = Math.random() * crc2.canvas.width;
             let y = Math.random() * crc2.canvas.height;
             drawFish2(x, y);
+            drawFish21(x, y);
         }
         for (let i = 0; i < 5; i++) {
             let x = Math.random() * crc2.canvas.width;
@@ -104,9 +105,23 @@ var L09_Canvas;
             crc2.stroke();
             crc2.fill();
         }
+        function drawFish21(_x, _y) {
+            crc2.beginPath();
+            crc2.fillStyle = "rgb(255,114,86)";
+            crc2.moveTo(_x, _y);
+            crc2.moveTo(_x, _y);
+            crc2.quadraticCurveTo(_x + 5, _y - 10, _x + 20, _y);
+            crc2.lineTo(_x + 30, _y + 5);
+            crc2.lineTo(_x + 30, _y - 5);
+            crc2.lineTo(_x + 25, _y);
+            crc2.quadraticCurveTo(_x + 5, _y + 10, _x, _y);
+            crc2.closePath();
+            crc2.stroke();
+            crc2.fill();
+        }
         function drawFish3(_x, _y) {
             crc2.beginPath();
-            crc2.fillStyle = "rgb(92,22,29)";
+            crc2.fillStyle = "rgb(132,202,139)";
             crc2.moveTo(_x, _y);
             crc2.quadraticCurveTo(_x + 20, _y - 60, _x + 80, _y);
             crc2.lineTo(_x + 120, _y + 60);

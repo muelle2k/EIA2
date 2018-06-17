@@ -9,10 +9,10 @@ namespace L09_Canvas {
         let width: number = canvas.width;
         let height: number = canvas.height;
 
-        
-        
-        
-        
+
+
+
+
         drawWater();
 
         drawsand(height - 200);
@@ -35,9 +35,9 @@ namespace L09_Canvas {
         drawBubbles(50, 600, 50, 600, 5);
 
         drawPlant1(120, 1360);
-        
+
         drawPlant1(700, 1360);
-        
+
         drawBubbles(600, 600, 200, 600, 30);
 
         drawBubbles(600, 150, 200, 600, 15);
@@ -52,11 +52,12 @@ namespace L09_Canvas {
 
             drawFish1(x, y);
         }
-        for (let i: number = 0; i < 30; i++) {
+        for (let i: number = 0; i < 15; i++) {
             let x: number = Math.random() * crc2.canvas.width;
             let y: number = Math.random() * crc2.canvas.height;
 
             drawFish2(x, y);
+            drawFish21(x, y);
         }
         for (let i: number = 0; i < 5; i++) {
             let x: number = Math.random() * crc2.canvas.width;
@@ -111,7 +112,7 @@ namespace L09_Canvas {
 
                 crc2.beginPath();
                 crc2.arc(_x + width, _y + height, scale, 0, 30 * Math.PI);
-                
+
                 crc2.fillStyle = "rgba(188,210,238,0.6)";
                 crc2.stroke();
                 crc2.fill();
@@ -157,10 +158,27 @@ namespace L09_Canvas {
 
         }
 
+        function drawFish21(_x: number, _y: number): void {
+
+            crc2.beginPath();
+            crc2.fillStyle = "rgb(255,114,86)";
+            crc2.moveTo(_x, _y);
+            crc2.moveTo(_x, _y);
+            crc2.quadraticCurveTo(_x + 5, _y - 10, _x + 20, _y);
+            crc2.lineTo(_x + 30, _y + 5);
+            crc2.lineTo(_x + 30, _y - 5);
+            crc2.lineTo(_x + 25, _y);
+            crc2.quadraticCurveTo(_x + 5, _y + 10, _x, _y);
+            crc2.closePath();
+            crc2.stroke();
+            crc2.fill();
+
+        }
+
         function drawFish3(_x: number, _y: number): void {
 
             crc2.beginPath();
-            crc2.fillStyle = "rgb(92,22,29)";
+            crc2.fillStyle = "rgb(132,202,139)";
             crc2.moveTo(_x, _y);
             crc2.quadraticCurveTo(_x + 20, _y - 60, _x + 80, _y);
             crc2.lineTo(_x + 120, _y + 60);
