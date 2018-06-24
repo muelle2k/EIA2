@@ -46,11 +46,11 @@ namespace L10_Animation {
         move(): void {
             if (this.x < -300) {
                 this.x = 1400;
-                this.y = Math.floor(Math.random() * (600 - 0)) + 0;
+                this.y = Math.floor(Math.random() * (800 - 0)) + 0;
 
             }
             this.x += -30;
-            this.y += Math.random() * 4 - 2;
+            
         }
 
         draw(): void {           //Methoden Fähigkeiten
@@ -105,24 +105,39 @@ namespace L10_Animation {
 
     }
 
+    
+    
+    
+    
+    
+    
 
     export class bubbles {
         x: number;
         y: number;
-        w: number = 100;
-        h: number = 1500;
-        a: number = 100;
+        
 
-        move(): void { };
+        move(): void { 
+        
+        
+            this.x += 0;
+            this.y -= 10000;
+            
+            if ( this.y < 0 ) {
+                this.y = 400;
+            }
+          
+            
+        };
 
         draw(): void {
-            for (let i: number = 0; i < this.a; i++) {
-                let width: number = Math.random() * this.w;
-                let height: number = Math.random() * this.h;
+            for (let i: number = 0; i < 100; i++) {
+                let width: number = Math.random() * 100;
+                let height: number = Math.random() * 1500;
                 let scale: number = Math.random() * 20;
 
                 crc2.beginPath();
-                crc2.arc(600 + width, 150 + height, scale, 0, 30 * Math.PI);
+                crc2.arc(700 + width, 30 + height, scale, 0, 30 * Math.PI);
 
                 crc2.fillStyle = "rgba(188,210,238,10)";
                 crc2.stroke();
@@ -135,6 +150,10 @@ namespace L10_Animation {
 
 
 
+    
+    
+    
+    
     export class background {
 
         public paint(): void {

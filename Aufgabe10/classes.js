@@ -31,10 +31,9 @@ var L10_Animation;
         move() {
             if (this.x < -300) {
                 this.x = 1400;
-                this.y = Math.floor(Math.random() * (600 - 0)) + 0;
+                this.y = Math.floor(Math.random() * (800 - 0)) + 0;
             }
             this.x += -30;
-            this.y += Math.random() * 4 - 2;
         }
         draw() {
             L10_Animation.crc2.beginPath();
@@ -78,20 +77,21 @@ var L10_Animation;
     }
     L10_Animation.smallFish = smallFish;
     class bubbles {
-        constructor() {
-            this.w = 100;
-            this.h = 1500;
-            this.a = 100;
+        move() {
+            this.x += 0;
+            this.y -= 10000;
+            if (this.y < 0) {
+                this.y = 400;
+            }
         }
-        move() { }
         ;
         draw() {
-            for (let i = 0; i < this.a; i++) {
-                let width = Math.random() * this.w;
-                let height = Math.random() * this.h;
+            for (let i = 0; i < 100; i++) {
+                let width = Math.random() * 100;
+                let height = Math.random() * 1500;
                 let scale = Math.random() * 20;
                 L10_Animation.crc2.beginPath();
-                L10_Animation.crc2.arc(600 + width, 150 + height, scale, 0, 30 * Math.PI);
+                L10_Animation.crc2.arc(700 + width, 30 + height, scale, 0, 30 * Math.PI);
                 L10_Animation.crc2.fillStyle = "rgba(188,210,238,10)";
                 L10_Animation.crc2.stroke();
                 L10_Animation.crc2.fill();
