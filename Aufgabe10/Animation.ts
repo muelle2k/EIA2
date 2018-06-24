@@ -1,7 +1,7 @@
 namespace L10_Animation {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
-
+    let imgData: ImageData;
 
     let fishes1: smallFish[] = [];
     let fishes2: coolFish[] = [];
@@ -21,9 +21,11 @@ namespace L10_Animation {
         console.log(crc2);
         let width: number = canvas.width;
         let height: number = canvas.height;
-
-        crc2.fillStyle = "rgba(255,0,0,0.5)";
-        crc2.fillRect(50, 50, 100, 50);
+        
+        let hintergrund: background = new background();
+        hintergrund.paint();
+        imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Canvas al Bild gespeichert
+        console.log(imgData);
 
 
         for (let i: number = 0; i < nfish; i++) {
@@ -56,13 +58,6 @@ namespace L10_Animation {
 
 
 
-        //Hintergrund vor animate  background.draw()
-        //let hintergrund: background.draw() irgendwie mit getimagedata
-        //getimagedata wird das BIld gespeichert 
-        //putimagedata in animatefunktion 
-
-
-
         animate();
 
     }
@@ -70,10 +65,9 @@ namespace L10_Animation {
     function animate(): void {
 
         window.setTimeout(animate, 75);
-
-
-        crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-
+    
+        crc2.putImageData(imgData, 0, 0 );
+        
         moveObjects();
         drawObjects();
 

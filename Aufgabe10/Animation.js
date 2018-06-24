@@ -1,6 +1,7 @@
 var L10_Animation;
 (function (L10_Animation) {
     window.addEventListener("load", init);
+    let imgData;
     let fishes1 = [];
     let fishes2 = [];
     let fishes = [];
@@ -14,8 +15,10 @@ var L10_Animation;
         console.log(L10_Animation.crc2);
         let width = canvas.width;
         let height = canvas.height;
-        L10_Animation.crc2.fillStyle = "rgba(255,0,0,0.5)";
-        L10_Animation.crc2.fillRect(50, 50, 100, 50);
+        let hintergrund = new L10_Animation.background();
+        hintergrund.paint();
+        imgData = L10_Animation.crc2.getImageData(0, 0, canvas.width, canvas.height); //Canvas al Bild gespeichert
+        console.log(imgData);
         for (let i = 0; i < nfish; i++) {
             let fish = new L10_Animation.bigFish();
             fish.x = Math.random() * L10_Animation.crc2.canvas.width;
@@ -40,15 +43,11 @@ var L10_Animation;
             blubb.y = Math.random() * L10_Animation.crc2.canvas.height;
             bubbleArray.push(blubb);
         }
-        //Hintergrund vor animate  background.draw()
-        //let hintergrund: background.draw() irgendwie mit getimagedata
-        //getimagedata wird das BIld gespeichert 
-        //putimagedata in animatefunktion 
         animate();
     }
     function animate() {
         window.setTimeout(animate, 75);
-        L10_Animation.crc2.clearRect(0, 0, L10_Animation.crc2.canvas.width, L10_Animation.crc2.canvas.height);
+        L10_Animation.crc2.putImageData(imgData, 0, 0);
         moveObjects();
         drawObjects();
     }

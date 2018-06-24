@@ -99,5 +99,65 @@ var L10_Animation;
         }
     }
     L10_Animation.bubbles = bubbles;
+    class background {
+        paint() {
+            this.drawWater();
+            this.drawsand(L10_Animation.crc2.canvas.height - 200);
+            this.drawPlant(10, 1300);
+            this.drawPlant1(120, 1360);
+            this.drawPlant1(700, 1360);
+            this.drawPlant(900, 1300);
+            this.drawPlant1(800, 1450);
+        }
+        drawsand(_y) {
+            L10_Animation.crc2.beginPath();
+            L10_Animation.crc2.fillStyle = "rgb(139, 115, 085)";
+            L10_Animation.crc2.moveTo(0, L10_Animation.crc2.canvas.height);
+            L10_Animation.crc2.lineTo(0, _y);
+            for (let i = 0; i < L10_Animation.crc2.canvas.width; i++) {
+                L10_Animation.crc2.lineTo(i, 30 * Math.sin(i * .005) + _y);
+            }
+            L10_Animation.crc2.lineTo(L10_Animation.crc2.canvas.width, L10_Animation.crc2.canvas.height);
+            L10_Animation.crc2.lineTo(100, L10_Animation.crc2.canvas.height);
+            L10_Animation.crc2.fill();
+            L10_Animation.crc2.closePath();
+        }
+        drawWater() {
+            let gradient = L10_Animation.crc2.createLinearGradient(0, 0, 0, 1000);
+            gradient.addColorStop(0, "rgb(99,184,255)");
+            gradient.addColorStop(1, "rgb(58,95,205)");
+            L10_Animation.crc2.fillStyle = gradient;
+            L10_Animation.crc2.fillRect(0, 0, L10_Animation.crc2.canvas.width, L10_Animation.crc2.canvas.height);
+        }
+        drawPlant1(_x, _y) {
+            L10_Animation.crc2.beginPath();
+            L10_Animation.crc2.fillStyle = "rgb(0,139,69)";
+            L10_Animation.crc2.moveTo(_x, _y);
+            L10_Animation.crc2.lineTo(_x, _y - 130);
+            L10_Animation.crc2.lineTo(_x + 40, _y - 20);
+            L10_Animation.crc2.lineTo(_x + 40, _y - 20);
+            L10_Animation.crc2.lineTo(_x + 50, _y - 50);
+            L10_Animation.crc2.lineTo(_x + 150, _y - 250);
+            L10_Animation.crc2.lineTo(_x + 100, _y);
+            L10_Animation.crc2.closePath();
+            L10_Animation.crc2.stroke();
+            L10_Animation.crc2.fill();
+        }
+        drawPlant(_x, _y) {
+            L10_Animation.crc2.beginPath();
+            L10_Animation.crc2.fillStyle = "rgb(0,139,69)";
+            L10_Animation.crc2.moveTo(_x, _y);
+            L10_Animation.crc2.lineTo(_x - 60, _y - 260);
+            L10_Animation.crc2.lineTo(_x + 40, _y - 40);
+            L10_Animation.crc2.lineTo(_x + 40, _y - 400);
+            L10_Animation.crc2.lineTo(_x + 100, _y - 100);
+            L10_Animation.crc2.lineTo(_x + 300, _y - 500);
+            L10_Animation.crc2.lineTo(_x + 200, _y);
+            L10_Animation.crc2.closePath();
+            L10_Animation.crc2.stroke();
+            L10_Animation.crc2.fill();
+        }
+    }
+    L10_Animation.background = background;
 })(L10_Animation || (L10_Animation = {}));
 //# sourceMappingURL=classes.js.map
