@@ -50,7 +50,7 @@ namespace L10_Animation {
 
             }
             this.x += -30;
-            
+
         }
 
         draw(): void {           //Methoden Fähigkeiten
@@ -105,55 +105,63 @@ namespace L10_Animation {
 
     }
 
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 
     export class bubbles {
         x: number;
         y: number;
-        
+        r: number;
 
-        move(): void { 
-        
-        
-            this.x += 0;
-            this.y -= 10000;
-            
-            if ( this.y < 0 ) {
-                this.y = 400;
+
+        move(): void {
+            this.y += -15;
+
+            if (this.y < 0) {
+                this.y = 1200;
             }
-          
-            
-        };
+        }
 
         draw(): void {
-            for (let i: number = 0; i < 100; i++) {
-                let width: number = Math.random() * 100;
-                let height: number = Math.random() * 1500;
-                let scale: number = Math.random() * 20;
 
-                crc2.beginPath();
-                crc2.arc(700 + width, 30 + height, scale, 0, 30 * Math.PI);
-
-                crc2.fillStyle = "rgba(188,210,238,10)";
-                crc2.stroke();
-                crc2.fill();
-
-            }
+            crc2.beginPath();
+            crc2.arc(this.x, this.y, this.r, 0, 20 * Math.PI);
+            crc2.closePath();
+            crc2.strokeStyle = "rgba(188,210,238,100)";
+            crc2.stroke();
 
         }
     }
 
 
+    /*draw(): void {
 
-    
-    
-    
-    
+        let width: number = Math.random() * 100;
+        let height: number = Math.random() * 1500;
+        let scale: number = Math.random() * 20;
+
+        crc2.beginPath();
+        crc2.arc(700 + width, 30 + height, scale, 0, 20 * Math.PI);
+        crc2.fillStyle = "rgba(188,210,238,10)";
+        crc2.closePath();
+
+        crc2.stroke();
+        crc2.fill();
+    }*/
+
+
+
+
+
+
+
+
+
+
     export class background {
 
         public paint(): void {

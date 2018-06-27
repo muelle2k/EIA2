@@ -10,7 +10,7 @@ namespace L10_Animation {
     let nsfish: number = 30;
 
     let bubbleArray: bubbles[] = [];
-    let nbubbles: number = 1;
+    let b: number = 30;
 
 
 
@@ -21,10 +21,10 @@ namespace L10_Animation {
         console.log(crc2);
         let width: number = canvas.width;
         let height: number = canvas.height;
-        
+
         let hintergrund: background = new background();
         hintergrund.paint();
-        imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Canvas al Bild gespeichert
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Canvas al Bild gespeichert
         console.log(imgData);
 
 
@@ -49,13 +49,28 @@ namespace L10_Animation {
             fishes2.push(fish);
         }
 
-        for (let i: number = 0; i < nbubbles; i++) {
+       /* for (let i: number = 0; i < b; i++) {
             let blubb: bubbles = new bubbles();
             blubb.x = Math.random() * crc2.canvas.width;
             blubb.y = Math.random() * crc2.canvas.height;
             bubbleArray.push(blubb);
         }
-
+        for (let i: number = 0; i < 20; i++) {
+            let blubb: bubbles = new bubbles();
+            blubb.x = 1000;
+            blubb.y = Math.floor(Math.random() * (500 - 0)) + 0;
+            blubb.radius = Math.random() * 10;
+            bubbleArray.push(blubb);
+        }
+        
+        
+*/      for (let i: number = 0; i < b - 2; i++) {
+            let blubb: bubbles = new bubbles();
+            blubb.x = Math.random() * (1000 - 700) + 0;
+            blubb.y = Math.random() * 180;
+            blubb.r = Math.random() * 10;
+            bubbleArray.push(blubb);
+        }
 
 
         animate();
@@ -65,9 +80,9 @@ namespace L10_Animation {
     function animate(): void {
 
         window.setTimeout(animate, 75);
-    
-        crc2.putImageData(imgData, 0, 0 );
-        
+
+        crc2.putImageData(imgData, 0, 0);
+
         moveObjects();
         drawObjects();
 
@@ -85,8 +100,8 @@ namespace L10_Animation {
             fishes2[i].move();
         }
         for (let i: number = 0; i < bubbleArray.length; i++) {
-            bubbleArray[i].move();
-        }
+              bubbleArray[i].move();
+          }
     }
 
     function drawObjects(): void {
@@ -101,8 +116,8 @@ namespace L10_Animation {
             fishes2[i].draw();
         }
         for (let i: number = 0; i < bubbleArray.length; i++) {
-            bubbleArray[i].draw();
-        }
+             bubbleArray[i].draw();
+         }
 
 
     }
