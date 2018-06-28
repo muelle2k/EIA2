@@ -83,29 +83,27 @@ var L10_Animation;
                 this.y = 1200;
             }
         }
+        /*
+                draw(): void {
+        
+                    crc2.beginPath();
+                    crc2.arc(this.x, this.y, this.r, 0, 20 * Math.PI);
+                    crc2.closePath();
+                    crc2.strokeStyle = "rgba(188,210,238,100)";
+                    crc2.stroke();
+        
+                }
+            }*/
         draw() {
             L10_Animation.crc2.beginPath();
             L10_Animation.crc2.arc(this.x, this.y, this.r, 0, 20 * Math.PI);
+            L10_Animation.crc2.fillStyle = "rgba(188,210,238,10)";
             L10_Animation.crc2.closePath();
-            L10_Animation.crc2.strokeStyle = "rgba(188,210,238,100)";
             L10_Animation.crc2.stroke();
+            L10_Animation.crc2.fill();
         }
     }
     L10_Animation.bubbles = bubbles;
-    /*draw(): void {
-
-        let width: number = Math.random() * 100;
-        let height: number = Math.random() * 1500;
-        let scale: number = Math.random() * 20;
-
-        crc2.beginPath();
-        crc2.arc(700 + width, 30 + height, scale, 0, 20 * Math.PI);
-        crc2.fillStyle = "rgba(188,210,238,10)";
-        crc2.closePath();
-
-        crc2.stroke();
-        crc2.fill();
-    }*/
     class background {
         paint() {
             this.drawWater();
