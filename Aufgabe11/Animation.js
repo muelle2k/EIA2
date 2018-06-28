@@ -46,8 +46,8 @@ var Aufgabe11;
         animate();
     }
     function insertNewObject(_event) {
-        let cx = _event.clientX;
-        let cy = _event.clientY;
+        let cx = _event.pageX;
+        let cy = _event.pageY;
         let foodColor = ["rgba(238,154,73)", "rgba(290,154,73)", "rgba(138,154,73)", "rgba(238,54,233)"];
         let flake = new Aufgabe11.Food(cx, cy, foodColor[Math.floor(Math.random() * 4)]);
         flake.r = Math.random() * 10;
