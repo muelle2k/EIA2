@@ -1,5 +1,5 @@
-var Aufgabe10;
-(function (Aufgabe10) {
+var Aufgabe11;
+(function (Aufgabe11) {
     window.addEventListener("load", init);
     let imgData;
     let fishes1 = [];
@@ -11,34 +11,34 @@ var Aufgabe10;
     let b = 30;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
-        Aufgabe10.crc2 = canvas.getContext("2d");
-        console.log(Aufgabe10.crc2);
+        Aufgabe11.crc2 = canvas.getContext("2d");
+        console.log(Aufgabe11.crc2);
         let width = canvas.width;
         let height = canvas.height;
-        let hintergrund = new Aufgabe10.Background();
+        let hintergrund = new Aufgabe11.Background();
         hintergrund.paint();
-        imgData = Aufgabe10.crc2.getImageData(0, 0, canvas.width, canvas.height); //Canvas al Bild gespeichert
+        imgData = Aufgabe11.crc2.getImageData(0, 0, canvas.width, canvas.height); //Canvas al Bild gespeichert
         console.log(imgData);
         for (let i = 0; i < nfish; i++) {
-            let fish = new Aufgabe10.bigFish();
-            fish.x = Math.random() * Aufgabe10.crc2.canvas.width;
-            fish.y = Math.random() * Aufgabe10.crc2.canvas.height;
+            let fish = new Aufgabe11.bigFish();
+            fish.x = Math.random() * Aufgabe11.crc2.canvas.width;
+            fish.y = Math.random() * Aufgabe11.crc2.canvas.height;
             fishes.push(fish);
         }
         for (let i = 0; i < nsfish; i++) {
-            let fish = new Aufgabe10.smallFish();
-            fish.x = Math.random() * Aufgabe10.crc2.canvas.width;
-            fish.y = Math.random() * Aufgabe10.crc2.canvas.height;
+            let fish = new Aufgabe11.smallFish();
+            fish.x = Math.random() * Aufgabe11.crc2.canvas.width;
+            fish.y = Math.random() * Aufgabe11.crc2.canvas.height;
             fishes1.push(fish);
         }
         for (let i = 0; i < nsfish; i++) {
-            let fish = new Aufgabe10.coolFish();
-            fish.x = Math.random() * Aufgabe10.crc2.canvas.width;
-            fish.y = Math.random() * Aufgabe10.crc2.canvas.height;
+            let fish = new Aufgabe11.coolFish();
+            fish.x = Math.random() * Aufgabe11.crc2.canvas.width;
+            fish.y = Math.random() * Aufgabe11.crc2.canvas.height;
             fishes2.push(fish);
         }
         for (let i = 0; i < b - 2; i++) {
-            let blubb = new Aufgabe10.Bubble();
+            let blubb = new Aufgabe11.Bubble();
             blubb.x = Math.random() * (1000 - 700) + 0;
             blubb.y = Math.random() * 180;
             blubb.r = Math.random() * 10;
@@ -48,7 +48,7 @@ var Aufgabe10;
     }
     function animate() {
         window.setTimeout(animate, 75);
-        Aufgabe10.crc2.putImageData(imgData, 0, 0);
+        Aufgabe11.crc2.putImageData(imgData, 0, 0);
         moveObjects();
         drawObjects();
     }
@@ -80,5 +80,5 @@ var Aufgabe10;
             bubbleArray[i].draw();
         }
     }
-})(Aufgabe10 || (Aufgabe10 = {}));
+})(Aufgabe11 || (Aufgabe11 = {}));
 //# sourceMappingURL=Animation.js.map

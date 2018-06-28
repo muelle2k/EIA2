@@ -1,5 +1,4 @@
-namespace Aufgabe10 {
-
+namespace Aufgabe11 {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
     let imgData: ImageData;
@@ -50,8 +49,8 @@ namespace Aufgabe10 {
             fishes2.push(fish);
         }
 
-
-        for (let i: number = 0; i < b - 2; i++) {
+        
+      for (let i: number = 0; i < b - 2; i++) {
             let blubb: Bubble = new Bubble();
             blubb.x = Math.random() * (1000 - 700) + 0;
             blubb.y = Math.random() * 180;
@@ -86,9 +85,9 @@ namespace Aufgabe10 {
         for (let i: number = 0; i < fishes2.length; i++) {
             fishes2[i].move();
         }
-        for (let i: number = 0; i < bubbleArray.length; i++) {
-            bubbleArray[i].move();
-        }
+       for (let i: number = 0; i < bubbleArray.length; i++) {
+              bubbleArray[i].move();
+          }
     }
 
     function drawObjects(): void {
@@ -103,8 +102,8 @@ namespace Aufgabe10 {
             fishes2[i].draw();
         }
         for (let i: number = 0; i < bubbleArray.length; i++) {
-            bubbleArray[i].draw();
-        }
+             bubbleArray[i].draw();
+         }
 
 
     }
