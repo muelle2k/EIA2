@@ -1,3 +1,11 @@
+/*
+Aufgabe 11: Inheritance-Seaworld
+Name: Patrick Müller-Klug
+Matrikel: 257836
+Datum: 28.06.2018
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe.
+Er wurde nicht kopiert und auch nicht diktiert.
+*/
 var Aufgabe11;
 (function (Aufgabe11) {
     window.addEventListener("load", init);
@@ -38,11 +46,10 @@ var Aufgabe11;
         animate();
     }
     function insertNewObject(_event) {
-        let cx = _event.screenX;
-        console.log(_event.screenX);
-        let cy = _event.screenY;
-        console.log(_event.screenY);
-        let flake = new Aufgabe11.Food(cx, cy, "rgba(238,154,73)");
+        let cx = _event.clientX;
+        let cy = _event.clientY;
+        let foodColor = ["rgba(238,154,73)", "rgba(290,154,73)", "rgba(138,154,73)", "rgba(238,54,233)"];
+        let flake = new Aufgabe11.Food(cx, cy, foodColor[Math.floor(Math.random() * 4)]);
         flake.r = Math.random() * 10;
         objects.push(flake);
     }

@@ -1,3 +1,13 @@
+/*
+Aufgabe 11: Inheritance-Seaworld
+Name: Patrick Müller-Klug
+Matrikel: 257836
+Datum: 28.06.2018
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. 
+Er wurde nicht kopiert und auch nicht diktiert.
+*/
+
+
 namespace Aufgabe11 {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
@@ -6,8 +16,6 @@ namespace Aufgabe11 {
     let nfish: number = 10;
     let nsfish: number = 30;
     let b: number = 30;
-
-
 
 
     function init(_event: Event): void {
@@ -24,7 +32,7 @@ namespace Aufgabe11 {
 
         canvas.addEventListener("click", insertNewObject);
         canvas.addEventListener("touchstart", insertNewObject);
-        
+
         for (let i: number = 0; i < nfish; i++) {
             let fish: bigFish = new bigFish(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height, "rgb(43,58,68)");
             //fish.x = Math.random() * crc2.canvas.width;
@@ -50,28 +58,25 @@ namespace Aufgabe11 {
     }
 
     function insertNewObject(_event: MouseEvent): void {
-        let cx: number = _event.screenX;
-        console.log(_event.screenX);
-        let cy: number = _event.screenY;
-        console.log(_event.screenY);
-
-        let flake: Food = new Food(cx, cy, "rgba(238,154,73)");
+        let cx: number = _event.clientX;
+        let cy: number = _event.clientY;
+        let foodColor: string[] = ["rgba(238,154,73)", "rgba(290,154,73)", "rgba(138,154,73)", "rgba(238,54,233)"]
+        let flake: Food = new Food(cx, cy, foodColor[Math.floor(Math.random()* 4)]);
         flake.r = Math.random() * 10;
         objects.push(flake);
     }
 
-    
+
     function animate(): void {
 
         window.setTimeout(animate, 75);
         crc2.putImageData(imgData, 0, 0);
- 
+
         moveObjects();
         drawObjects();
-        
 
     }
-    
+
 
     function moveObjects(): void {
 
@@ -86,7 +91,6 @@ namespace Aufgabe11 {
         for (let i: number = 0; i < objects.length; i++) {
             objects[i].draw();
         }
-
 
     }
 }
