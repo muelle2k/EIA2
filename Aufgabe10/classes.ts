@@ -112,7 +112,7 @@ namespace L10_Animation {
 
 
 
-    export class bubbles {
+    export class bubbles {    //Großbuchstaben beginnen
         x: number;
         y: number;
         r: number;
@@ -136,7 +136,6 @@ namespace L10_Animation {
         
                 }
             }*/
-
 
         draw(): void {          
             crc2.beginPath();
