@@ -1,10 +1,11 @@
 namespace Aufgabe11 {
-    
-    export class bigFish {
-        color: string;          //Attribute Eigenschaften
-        x: number;
-        y: number;
 
+    export class bigFish extends MovingObjects {
+
+        constructor(_x: number, _y: number, _color: string) {
+            super(_x, _y, _color);
+
+        }
 
         move(): void {
             if (this.x < -300) {
@@ -20,15 +21,13 @@ namespace Aufgabe11 {
 
             console.log(this.x, this.y);
             crc2.beginPath();
-            crc2.fillStyle = "rgb(43,58,68)";
+            crc2.fillStyle = this.color;
             crc2.moveTo(this.x, this.y);
             crc2.quadraticCurveTo(this.x + 50, this.y - 100, this.x + 200, this.y);
             crc2.lineTo(this.x + 300, this.y + 50);
             crc2.lineTo(this.x + 300, this.y - 50);
             crc2.lineTo(this.x + 250, this.y);
             crc2.quadraticCurveTo(this.x + 50, this.y + 100, this.x, this.y);
-            crc2.stroke();
-            crc2.fill();
             crc2.closePath();
             crc2.stroke();
             crc2.fill();
@@ -37,11 +36,12 @@ namespace Aufgabe11 {
     }
 
 
-    export class coolFish {
-        color: string;          //Attribute Eigenschaften
-        x: number;
-        y: number;
+    export class coolFish extends MovingObjects {
 
+        constructor(_x: number, _y: number, _color: string) {
+            super(_x, _y, _color);
+
+        }
 
         move(): void {
             if (this.x < -300) {
@@ -56,7 +56,7 @@ namespace Aufgabe11 {
         draw(): void {           //Methoden Fähigkeiten
 
             crc2.beginPath();
-            crc2.fillStyle = "rgb(192,202,29)";
+            crc2.fillStyle = this.color;
             crc2.moveTo(this.x, this.y);
             crc2.moveTo(this.x, this.y);
             crc2.quadraticCurveTo(this.x + 5, this.y - 10, this.x + 20, this.y);
@@ -71,11 +71,12 @@ namespace Aufgabe11 {
 
     }
 
-    export class smallFish {
-        color: string;          //Attribute Eigenschaften
-        x: number;
-        y: number;
+    export class smallFish extends MovingObjects {
 
+        constructor(_x: number, _y: number, _color: string) {
+            super(_x, _y, _color);
+
+        }
 
         move(): void {
             if (this.x < -350) {
@@ -90,7 +91,7 @@ namespace Aufgabe11 {
         draw(): void {           //Methoden Fähigkeiten
 
             crc2.beginPath();
-            crc2.fillStyle = "rgb(255,114,86)";
+            crc2.fillStyle = this.color;
             crc2.moveTo(this.x, this.y);
             crc2.moveTo(this.x, this.y);
             crc2.quadraticCurveTo(this.x + 5, this.y - 10, this.x + 20, this.y);

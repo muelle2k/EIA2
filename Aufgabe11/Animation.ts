@@ -2,14 +2,9 @@ namespace Aufgabe11 {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
     let imgData: ImageData;
-
-    let fishes1: smallFish[] = [];
-    let fishes2: coolFish[] = [];
-    let fishes: bigFish[] = [];
+    let objects: MovingObjects[] = [];
     let nfish: number = 10;
     let nsfish: number = 30;
-
-    let bubbleArray: Bubble[] = [];
     let b: number = 30;
 
 
@@ -27,83 +22,70 @@ namespace Aufgabe11 {
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Canvas al Bild gespeichert
         console.log(imgData);
 
-
-        for (let i: number = 0; i < nfish; i++) {
-            let fish: bigFish = new bigFish();
-            fish.x = Math.random() * crc2.canvas.width;
-            fish.y = Math.random() * crc2.canvas.height;
-            fishes.push(fish);
-        }
-
-        for (let i: number = 0; i < nsfish; i++) {
-            let fish: smallFish = new smallFish();
-            fish.x = Math.random() * crc2.canvas.width;
-            fish.y = Math.random() * crc2.canvas.height;
-            fishes1.push(fish);
-        }
-
-        for (let i: number = 0; i < nsfish; i++) {
-            let fish: coolFish = new coolFish();
-            fish.x = Math.random() * crc2.canvas.width;
-            fish.y = Math.random() * crc2.canvas.height;
-            fishes2.push(fish);
-        }
-
+        canvas.addEventListener("click", insertNewObject);
+        canvas.addEventListener("touchstart", insertNewObject);
         
-      for (let i: number = 0; i < b - 2; i++) {
-            let blubb: Bubble = new Bubble();
-            blubb.x = Math.random() * (1000 - 700) + 0;
-            blubb.y = Math.random() * 180;
-            blubb.r = Math.random() * 10;
-            bubbleArray.push(blubb);
+        for (let i: number = 0; i < nfish; i++) {
+            let fish: bigFish = new bigFish(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height, "rgb(43,58,68)");
+            //fish.x = Math.random() * crc2.canvas.width;
+            //fish.y = Math.random() * crc2.canvas.height;
+            objects.push(fish);
         }
 
+        for (let i: number = 0; i < nsfish; i++) {
+            let fish: smallFish = new smallFish(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height, "rgb(255,114,86)");
+            let fish1: coolFish = new coolFish(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height, "rgb(192,202,29)");
+            objects.push(fish);
+            objects.push(fish1);
+        }
+
+        for (let i: number = 0; i < b - 2; i++) {
+            let blubb: Bubble = new Bubble(Math.random() * (1000 - 700) + 0, Math.random() * 180, "rgba(188,210,238,10)");
+            blubb.r = Math.random() * 10;
+            objects.push(blubb);
+        }
 
         animate();
 
     }
 
+    function insertNewObject(_event: MouseEvent): void {
+        let cx: number = _event.screenX;
+        console.log(_event.screenX);
+        let cy: number = _event.screenY;
+        console.log(_event.screenY);
+
+        let flake: Food = new Food(cx, cy, "rgba(238,154,73)");
+        flake.r = Math.random() * 10;
+        objects.push(flake);
+    }
+
+    
     function animate(): void {
 
         window.setTimeout(animate, 75);
-
         crc2.putImageData(imgData, 0, 0);
-
+ 
         moveObjects();
         drawObjects();
+        
 
     }
+    
 
     function moveObjects(): void {
 
-        for (let i: number = 0; i < fishes.length; i++) {
-            fishes[i].move();
+        for (let i: number = 0; i < objects.length; i++) {
+            objects[i].move();
         }
-        for (let i: number = 0; i < fishes1.length; i++) {
-            fishes1[i].move();
-        }
-        for (let i: number = 0; i < fishes2.length; i++) {
-            fishes2[i].move();
-        }
-       for (let i: number = 0; i < bubbleArray.length; i++) {
-              bubbleArray[i].move();
-          }
+
     }
 
     function drawObjects(): void {
 
-        for (let i: number = 0; i < fishes.length; i++) {
-            fishes[i].draw();
+        for (let i: number = 0; i < objects.length; i++) {
+            objects[i].draw();
         }
-        for (let i: number = 0; i < fishes1.length; i++) {
-            fishes1[i].draw();
-        }
-        for (let i: number = 0; i < fishes2.length; i++) {
-            fishes2[i].draw();
-        }
-        for (let i: number = 0; i < bubbleArray.length; i++) {
-             bubbleArray[i].draw();
-         }
 
 
     }
