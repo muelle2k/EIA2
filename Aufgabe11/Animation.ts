@@ -61,11 +61,23 @@ namespace Aufgabe11 {
         let cx: number = _event.pageX
         let cy: number = _event.pageY;
         let foodColor: string[] = ["rgba(238,154,73)", "rgba(290,154,73)", "rgba(138,154,73)", "rgba(238,54,233)"]
-        let flake: Food = new Food(cx, cy, foodColor[Math.floor(Math.random()* 4)]);
-        flake.r = Math.random() * 10;
-        objects.push(flake);
-    }
 
+        for (let i: number = 0; i < 4; i++) {
+            let flake: Food = new Food(cx, cy, foodColor[Math.floor(Math.random() * 4)]);
+            flake.r = Math.random() * 10;
+             if (i == 2) {
+                flake.x = cx;
+                flake.y = cy;
+                objects.push(flake);
+            } else {
+                flake.x = cx + Math.random() * 50 - 2;
+                flake.y = cy + Math.random() * 20 - 50;
+                objects.push(flake);
+            }
+            objects.push(flake);
+        }
+    }
+    
 
     function animate(): void {
 
