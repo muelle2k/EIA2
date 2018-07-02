@@ -1,5 +1,5 @@
 namespace L11_Inheritance {
-    export class Circle extends DavidStar {
+    export class Dreieck extends DavidStar {
          r:number;
         constructor(_color: string) {
             super(_color);

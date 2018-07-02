@@ -18,7 +18,7 @@ namespace L11_Inheritance {
             stars.push(star);
             let rect: Rect = new Rect("#ff9900");
             stars.push(rect);
-            let circle: Circle = new Circle("#ffff00");
+            let circle: Dreieck = new Dreieck("#ffff00");
             stars.push(circle);
         }
 
@@ -44,7 +44,7 @@ namespace L11_Inheritance {
             rect.y = _y;
             stars.push(rect);
         } else {
-            let circle: Circle = new Circle("#99bbff");
+            let circle: Dreieck = new Dreieck("#99bbff");
             circle.x = _x;
             circle.y = _y;
             stars.push(circle);
