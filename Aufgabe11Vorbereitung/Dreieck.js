@@ -1,6 +1,6 @@
 var L11_Inheritance;
 (function (L11_Inheritance) {
-    class Circle extends L11_Inheritance.DavidStar {
+    class Dreieck extends L11_Inheritance.DavidStar {
         constructor(_color) {
             super(_color);
         }
@@ -18,6 +18,6 @@ var L11_Inheritance;
             L11_Inheritance.crc2.fill();
         }
     }
-    L11_Inheritance.Circle = Circle;
+    L11_Inheritance.Dreieck = Dreieck;
 })(L11_Inheritance || (L11_Inheritance = {}));
-//# sourceMappingURL=Circle.js.map
+//# sourceMappingURL=Dreieck.js.map

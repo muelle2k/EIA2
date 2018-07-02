@@ -7,10 +7,8 @@ var Aufgabe11;
             this.color = _color;
         }
         move() {
-            ;
         }
         draw() {
-            ;
         }
     }
     Aufgabe11.MovingObjects = MovingObjects;

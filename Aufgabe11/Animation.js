@@ -27,14 +27,14 @@ var Aufgabe11;
         canvas.addEventListener("click", insertNewObject);
         canvas.addEventListener("touchstart", insertNewObject);
         for (let i = 0; i < nfish; i++) {
-            let fish = new Aufgabe11.bigFish(Math.random() * Aufgabe11.crc2.canvas.width, Math.random() * Aufgabe11.crc2.canvas.height, "rgb(43,58,68)");
+            let fish = new Aufgabe11.BigFish(Math.random() * Aufgabe11.crc2.canvas.width, Math.random() * Aufgabe11.crc2.canvas.height, "rgb(43,58,68)");
             //fish.x = Math.random() * crc2.canvas.width;
             //fish.y = Math.random() * crc2.canvas.height;
             objects.push(fish);
         }
         for (let i = 0; i < nsfish; i++) {
-            let fish = new Aufgabe11.smallFish(Math.random() * Aufgabe11.crc2.canvas.width, Math.random() * Aufgabe11.crc2.canvas.height, "rgb(255,114,86)");
-            let fish1 = new Aufgabe11.coolFish(Math.random() * Aufgabe11.crc2.canvas.width, Math.random() * Aufgabe11.crc2.canvas.height, "rgb(192,202,29)");
+            let fish = new Aufgabe11.SmallFish(Math.random() * Aufgabe11.crc2.canvas.width, Math.random() * Aufgabe11.crc2.canvas.height, "rgb(255,114,86)");
+            let fish1 = new Aufgabe11.CoolFish(Math.random() * Aufgabe11.crc2.canvas.width, Math.random() * Aufgabe11.crc2.canvas.height, "rgb(192,202,29)");
             objects.push(fish);
             objects.push(fish1);
         }

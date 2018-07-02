@@ -9,6 +9,7 @@ Er wurde nicht kopiert und auch nicht diktiert.
 
 
 namespace Aufgabe11 {
+    
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
     let imgData: ImageData;
@@ -34,15 +35,15 @@ namespace Aufgabe11 {
         canvas.addEventListener("touchstart", insertNewObject);
 
         for (let i: number = 0; i < nfish; i++) {
-            let fish: bigFish = new bigFish(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height, "rgb(43,58,68)");
+            let fish: BigFish = new BigFish(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height, "rgb(43,58,68)");
             //fish.x = Math.random() * crc2.canvas.width;
             //fish.y = Math.random() * crc2.canvas.height;
             objects.push(fish);
         }
 
         for (let i: number = 0; i < nsfish; i++) {
-            let fish: smallFish = new smallFish(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height, "rgb(255,114,86)");
-            let fish1: coolFish = new coolFish(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height, "rgb(192,202,29)");
+            let fish: SmallFish = new SmallFish(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height, "rgb(255,114,86)");
+            let fish1: CoolFish = new CoolFish(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height, "rgb(192,202,29)");
             objects.push(fish);
             objects.push(fish1);
         }

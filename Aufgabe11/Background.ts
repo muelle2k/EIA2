@@ -29,8 +29,6 @@ namespace Aufgabe11 {
         }
 
 
-
-
         drawWater(): void {
             let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, 1000);
             gradient.addColorStop(0, "rgb(99,184,255)");

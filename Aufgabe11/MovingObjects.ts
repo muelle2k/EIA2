@@ -11,10 +11,10 @@ namespace Aufgabe11 {
             this.color = _color;
         }
         move(): void {
-            ;
+
         }
         draw(): void {
-            ;
+
         }
     }
 }
